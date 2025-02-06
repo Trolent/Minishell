@@ -6,11 +6,9 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:27 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/01 18:01:28 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:36:03 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef EXEC_H
 # define EXEC_H
@@ -67,7 +65,7 @@ void		fdlst_delete_node(t_fdlst **lst, int key);
 
 //	redir_lst.c
 t_fdlst		*fdlst_new(int fd, bool close_in_child);
-int			fdlst_add_front(t_fdlst	**lst, t_fdlst *new);
+int			fdlst_add_front(t_fdlst **lst, t_fdlst *new);
 void		fdlst_close_in_child(t_fdlst *lst);
 
 //	redir_hd.c

@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:04:39 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 13:04:43 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:37:01 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	print_env_lst(t_env *lst)
 		else
 			print = ft_dprintf(STDOUT_FILENO, "export %s\n", lst->key);
 		if (print == -1)
-				return(perror("minishell: export: write error"), print);
+			return (perror("minishell: export: write error"), print);
 		lst = lst->next;
 	}
 	// if (print == -1)

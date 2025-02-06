@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   printf_dprint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 15:18:45 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/14 16:19:46 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:34:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
-
+#include <stdio.h>
 
 int	ak_printf(int fd, const char *str, va_list *arg)
 {

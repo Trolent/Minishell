@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:40:53 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 08:21:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:34:37 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@
 
 typedef struct s_print
 {
-	char	buffer[MAX_BUFFER + 1];
-	int		wrote;
-	int		j;
-	int		fd;
-	int		err;
-}	t_print;
+	char			buffer[MAX_BUFFER + 1];
+	int				wrote;
+	int				j;
+	int				fd;
+	int				err;
+}					t_print;
 
 //****************************************************************************//
 // ------------------------------- CHAR UTILS ------------------------------- //
@@ -93,7 +93,7 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 /*duplicate a string*/
 char				*ft_strdup(const char *s1);
 /*duplicates a string up to n elements*/
-char	*ft_strndup(const char *s1, int len);
+char				*ft_strndup(const char *s1, int len);
 /*join two strings*/
 char				*ft_strjoin(char const *s1, char const *s2);
 /*split a string in an array of strings separated by a single char*/
@@ -212,19 +212,22 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 
-int	print_buffer(int fd, char *buffer, int *j, int *err);
+//****************************************************************************//
+// ----------------------------- DPRINTF UTILS ------------------------------ //
+//****************************************************************************//
 
-int	string_tobuffer(char *str, t_print *data);
+int					print_buffer(int fd, char *buffer, int *j, int *err);
 
-int	char_tobuffer(int c, t_print *data);
+int					string_tobuffer(char *str, t_print *data);
 
-int	int_tobuffer(int n, t_print *data);
+int					char_tobuffer(int c, t_print *data);
 
-int	ft_ddraft(char flag, t_print *data, va_list *arg);
+int					int_tobuffer(int n, t_print *data);
 
-int	ft_dprintf(int fd, const char *str, ...);
+int					ft_ddraft(char flag, t_print *data, va_list *arg);
 
-void ft_free_array(char **strs, int len);
+int					ft_dprintf(int fd, const char *str, ...);
 
+void				ft_free_array(char **strs, int len);
 
 #endif

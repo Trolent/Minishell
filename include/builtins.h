@@ -6,18 +6,17 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:21 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/01 18:01:22 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:36:46 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
 # include "env.h"
 
-# define PWDERROR "minishell: pwd: error retrieving current directory: getcwd:\
+# define PWDERROR "minishell: pwd: error retrieving\
+ current directory: getcwd:\
  cannot access parent directories"
 
 int		builtin_echo(char **strs);
