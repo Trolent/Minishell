@@ -5,30 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 07:21:54 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/01 18:13:00 by trolland         ###   ########.fr       */
+/*   Created: 2025/02/06 13:04:39 by trolland          #+#    #+#             */
+/*   Updated: 2025/02/06 13:04:43 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-int	print_env_lst(t_env *lst)
+static int	print_env_lst(t_env *lst)
 {
-	int	err;
+	int	print;
 
-	err = 0;
+	print = 0;
 	while (lst)
 	{
 		if (lst->value)
-			err = ft_dprintf(STDOUT_FILENO, "export %s=\"%s\"\n", lst->key,
+			print = ft_dprintf(STDOUT_FILENO, "export %s=\"%s\"\n", lst->key,
 					lst->value);
 		else
-			err = ft_dprintf(STDOUT_FILENO, "export %s\n", lst->key);
+			print = ft_dprintf(STDOUT_FILENO, "export %s\n", lst->key);
+		if (print == -1)
+				return(perror("minishell: export: write error"), print);
 		lst = lst->next;
 	}
-	if (err == -1)
-		perror("minishell: export: write error");
-	return (err);
+	// if (print == -1)
+	// 	perror("minishell: export: write error");
+	return (print);
 }
 
 int	ft_export(char **args, t_data *data)
@@ -39,15 +41,14 @@ int	ft_export(char **args, t_data *data)
 
 	e = 0;
 	tmp = 0;
-	i = 1;
-	if (!args[i])
+	i = 0;
+	if (!args[1])
 		return (print_env_lst(data->export));
-	while (args[i])
+	while (args[++i])
 	{
 		tmp = check_export(args[i], data);
 		if (tmp)
 			e = tmp;
-		i++;
 	}
 	return (e);
 }

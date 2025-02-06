@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:52:23 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/12/21 11:51:11 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:05:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,5 @@ t_env	*env_get_node(t_env *env, char *key);
 t_env	*env_get_real_node(t_env **env, char *key);
 void	env_print(t_env *lst);
 void	env_clear(t_env **lst);
-
-// debug.c
-void	print_lst_env(t_env *env);
 
 #endif

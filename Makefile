@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+         #
+#    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2024/12/21 11:37:19 by akdovlet         ###   ########.fr        #
+#    Updated: 2025/02/06 13:05:55 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,6 @@ SRC		:=	main.c								\
 			env/env_setup.c						\
 			env/env_setup2.c					\
 			env/env_utils.c						\
-			env/debug.c 						\
 			setup/setup_shell.c					\
 			setup/setup_signal.c				\
 			token/debugging.c					\
@@ -103,6 +102,18 @@ DEPS 	:=	$(OBJ:.o=.d)
 CC		:=	cc
 CFLAGS	:=	-Wall -Werror -Wextra -MMD -MP -Iinclude -Ilibft/include -g
 
+OS := $(shell uname)
+
+ifeq ($(OS), Darwin)
+    CFLAGS += -I/opt/homebrew/opt/readline/include
+    LDFLAGS += -L/opt/homebrew/opt/readline/lib
+    READLINE_FLAGS = -lreadline -L/opt/homebrew/opt/readline/lib -I/opt/homebrew/opt/readline/include
+else
+    READLINE_FLAGS = -lreadline
+    LDFLAGS =
+endif
+
+
 all: create_dirs $(NAME)
 
 create_dirs: $(BUILD)
@@ -111,7 +122,7 @@ $(BUILD):
 	@if [ ! -d $(BUILD) ]; then mkdir -p $(BUILD); fi
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(CFLAGS) -L/usr/local/lib -I/usr/local/include $(OBJ) $(LIBFT) -o $(NAME) -lreadline
+	@$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBFT) -o $(NAME) $(READLINE_FLAGS)
 
 $(BUILD)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)

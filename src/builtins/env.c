@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 14:18:24 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/01 18:13:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 12:45:45 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	ft_env(char **argv, t_env *env)
 		while (env)
 		{
 			if (ft_dprintf(STDOUT_FILENO, "%s=%s\n", env->key, env->value) < 0)
-			{
-				perror("minishell: env: write error");
-				return (125);
-			}
+				return (perror("minishell: env: write error"), 125);
 			env = env->next;
 		}
 	}
