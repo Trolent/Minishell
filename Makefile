@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/06 13:05:55 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/06 13:22:46 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,10 +116,8 @@ endif
 
 all: create_dirs $(NAME)
 
-create_dirs: $(BUILD)
-
-$(BUILD):
-	@if [ ! -d $(BUILD) ]; then mkdir -p $(BUILD); fi
+create_dirs:
+	@mkdir -p $(BUILD)
 
 $(NAME): $(OBJ) $(LIBFT)
 	@$(CC) $(CFLAGS) $(LDFLAGS) $(OBJ) $(LIBFT) -o $(NAME) $(READLINE_FLAGS)
@@ -127,17 +125,17 @@ $(NAME): $(OBJ) $(LIBFT)
 $(BUILD)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "\033[1;32%sm\tCompiled: $<\033[0m\n";
+	@printf "\033[1;32mCompiled: $<\033[0m\n";
 
 $(LIBFT):
 	@$(MAKE) --no-print-directory -C libft
 
 clean:
-	@if [ -d "$(BUILD)" ]; then $(RM) -rf "$(BUILD)" && echo "\033[1;31m\tDeleted: $(NAME) $(BUILD)\033[0m"; fi
+	@if [ -d "$(BUILD)" ]; then $(RM) -rf "$(BUILD)" && echo "\033[1;31mDeleted: $(BUILD)\033[0m"; fi
 	@$(MAKE) --no-print-directory clean -C libft
 
 fclean: clean
-	@if [ -f $(NAME) ]; then $(RM) -rf $(NAME) && echo "\033[1;31m\tDeleted: $(NAME)\033[0m"; fi
+	@if [ -f $(NAME) ]; then $(RM) -rf $(NAME) && echo "\033[1;31mDeleted: $(NAME)\033[0m"; fi
 	@$(MAKE) --no-print-directory fclean -C libft
 
 val: all
@@ -147,11 +145,9 @@ full: all
 	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes ./${NAME}
 
 infile: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes  <infile ./${NAME}
+	valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --trace-children=yes <infile ./${NAME}
 
-re:
-	@make --no-print-directory fclean
-	@make --no-print-directory all
+re: fclean all
 
 -include $(DEPS)
 
