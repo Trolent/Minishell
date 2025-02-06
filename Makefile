@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/06 16:22:14 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/06 18:41:45 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,6 @@ SRC		:=	main.c								\
 			exec/redir_lst.c					\
 			exec/redir_node_utils.c				\
 			exec/redir_node.c					\
-			exec/path_utils.c 					\
 			exec/wait_pid.c						\
 			exec_loop/execution_loop.c			\
 			exec_loop/non_interactive.c

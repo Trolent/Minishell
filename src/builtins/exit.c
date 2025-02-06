@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:04:41 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/06 15:59:40 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 18:50:04 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,38 @@ int	ft_exit(char **tab, t_data *data)
 	clear_exit(data, data->status);
 	return (0);
 }
+
+
+// return minishell$> exit 3424 gfdsfg
+// exit
+// minishell: exit: too many arguments
+// minishell$> echo $?
+// 127
+// minishell$> 
+
+// bash
+// trolland@bess-f4r3s4:~/Documents/Cursus/Git/Minishell$ exit 3424 gfdsfg
+// exit
+// bash: exit: too many arguments
+// trolland@bess-f4r3s4:~/Documents/Cursus/Git/Minishell$ echo $?
+// 1
+// trolland@bess-f4r3s4:~/Documents/Cursus/Git/Minishell$ exit
+// exit
+
+
+// minishell$> exit 123 132
+// exit
+// minishell: exit: too many arguments
+// minishell$> echo $?
+// 127
+// minishell$> echo $?
+// 0
+// minishell$> exit 15 15
+// exit
+// minishell: exit: too many arguments
+// minishell$> echo $?
+// 127
+// minishell$> 
+
+
+// doit prendre le retour de la commande précédente et non aavoir 127 hard code
