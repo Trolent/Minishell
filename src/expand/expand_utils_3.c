@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_utils_3.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gschwand <gschwand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:27:54 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/19 13:39:08 by gschwand         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:40:57 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@ char	*extract_var_name(char *str, int *i)
 	tmp = *i;
 	*i = j;
 	return (ft_strndup(str + tmp + 1, j - tmp - 1));
-}
-
-void	free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
 }
 
 void	del_files_hidden(t_files **files)

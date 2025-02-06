@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:40:53 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 13:34:37 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:29:14 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,17 +217,11 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 //****************************************************************************//
 
 int					print_buffer(int fd, char *buffer, int *j, int *err);
-
 int					string_tobuffer(char *str, t_print *data);
-
 int					char_tobuffer(int c, t_print *data);
-
 int					int_tobuffer(int n, t_print *data);
-
 int					ft_ddraft(char flag, t_print *data, va_list *arg);
-
 int					ft_dprintf(int fd, const char *str, ...);
-
 void				ft_free_array(char **strs, int len);
 
 #endif

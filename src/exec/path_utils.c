@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   path_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:08:20 by gschwand          #+#    #+#             */
-/*   Updated: 2024/09/19 17:10:03 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:45:27 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
+// Function to find the PATH environment variable
 char	*find_path_env(char **env)
 {
 	int	i;
 
 	i = 0;
-	while (1)
+	while (env[i])
 	{
 		if (!ft_strncmp(env[i], "PATH", 4))
 			return (env[i] + 5);
@@ -26,6 +27,7 @@ char	*find_path_env(char **env)
 	return (NULL);
 }
 
+// Function to free a 2D array
 void	free_tab_2(char **tab)
 {
 	int	i;
@@ -36,43 +38,40 @@ void	free_tab_2(char **tab)
 		free(tab[i]);
 		i++;
 	}
+	free(tab);
 }
 
-char	**find_path_cmd(char **path_env, char *cmd)
+// Function to find the command path in the PATH directories
+char	*find_path_cmd(char **path_env, char *cmd)
 {
 	int		i;
-	char	*path_cmd[3];
-	char	**path_cmd_split;
+	char	*cmd_path;
+	char	*full_cmd_path;
 
 	i = 0;
 	while (path_env[i])
 	{
-		path_cmd[0] = ft_strjoin(path_env[i], "/");
-		path_cmd[1] = ft_strjoin(path_cmd[0], cmd);
-		path_cmd[2] = NULL;
-		if (!access(path_cmd[1], X_OK))
-		{
-			path_cmd_split = ft_split(path_cmd[1], ' ');
-			return (free_tab_2(path_cmd), path_cmd_split);
-		}
-		free_tab_2(path_cmd);
+		cmd_path = ft_strjoin(path_env[i], "/");
+		full_cmd_path = ft_strjoin(cmd_path, cmd);
+		free(cmd_path);
+		if (!access(full_cmd_path, X_OK))
+			return (full_cmd_path);
+		free(full_cmd_path);
 		i++;
 	}
 	return (NULL);
 }
 
+// Main function to find the command path
 char	*find_cmd(char **cmd, char **envp)
 {
 	char	**path_env;
-	char	**path_cmd;
-	char	*path;
+	char	*cmd_path;
 
 	path_env = ft_split(find_path_env(envp), ':');
-	path_cmd = find_path_cmd(path_env, cmd[0]);
-	if (!path_cmd)
-		return (free_tab(path_env), NULL);
-	path = ft_strdup(path_cmd[0]);
-	free_tab(path_env);
-	free_tab(path_cmd);
-	return (path);
+	if (!path_env)
+		return (NULL);
+	cmd_path = find_path_cmd(path_env, cmd[0]);
+	ft_free_tab(path_env);
+	return (cmd_path);
 }

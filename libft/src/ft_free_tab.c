@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:27:28 by trolland          #+#    #+#             */
-/*   Updated: 2024/05/07 18:55:52 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:40:46 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_free_tab(char **tab)
 	int	i;
 
 	i = 0;
-	(void)i;
 	while (tab[i])
 	{
 		free(tab[i]);
 		i++;
 	}
 	free(tab);
+	tab = NULL;
 }

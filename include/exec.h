@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:27 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 13:36:03 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:41:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int			subshell_node(t_ast *ast, t_data *data);
 
 // path_utlis.c
 void		free_tab_2(char **tab);
-void		free_tab(char **tab);
 char		*find_path_env(char **env);
 char		**find_path_cmd(char **path_env, char *cmd);
 char		*find_cmd(char **cmd, char **envp);
