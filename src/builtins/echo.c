@@ -6,13 +6,13 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 11:37:36 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 13:33:24 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:39:29 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-int	parse_flags(char **strs, int *i)
+static int	parse_flags(char **strs, int *i)
 {
 	int	flag;
 	int	j;
