@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:40:53 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/01 18:11:30 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 08:21:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,90 +18,168 @@
 //****************************************************************************//
 
 # include <fcntl.h>
+# include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 //****************************************************************************//
-// --------- GIVEN FUNCTIONS WHICH ARE PART OF THE STANDARD LIBRARY --------- //
+// ------------------------- SYSTEM'S SPECIFICATION ------------------------- //
 //****************************************************************************//
 
-/*returns 1 if character is an alphabetic character, 0 otherwise*/
+# if defined(__linux__)
+#  define PTRNULL "(nil)"
+# elif defined(__APPLE__)
+#  define PTRNULL "(0x0)"
+# endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
+//****************************************************************************//
+// ------------------------------- CHAR UTILS ------------------------------- //
+//****************************************************************************//
+
+/*verify if a char is a letter (returns 1 if true, 0 if false)*/
 int					ft_isalpha(int c);
-/*returns 1 if character is a digit, 0 otherwise*/
+/*verify if a char is a digit (returns 1 if true, 0 if false)*/
 int					ft_isdigit(int c);
-/*returns 1 if character is an alphanumeric character, 0 otherwise*/
+/*verify if a char is a letter or a digit (returns 1 if true, 0 if false)*/
 int					ft_isalnum(int c);
-/*returns 1 if character is an ASCII character, 0 otherwise*/
+/*verify if a char is a ASCII char (returns 1 if true, 0 if false)*/
 int					ft_isascii(int c);
-/*returns 1 if character is a printable character, 0 otherwise*/
+/*verify if a char is printable (returns 1 if true, 0 if false)*/
 int					ft_isprint(int c);
-/*returns the length of a string*/
-size_t				ft_strlen(const char *str);
-/*fills the first n bytes of the memory area pointed to by s with a byte c*/
-void				*ft_memset(void *b, int c, size_t len);
-/*fills the first n bytes of the memory area pointed to by s with 0*/
-void				ft_bzero(void *s, size_t n);
-/*copies n bytes from memory area src to memory area dst*/
-void				*ft_memcpy(void *dst, const void *src, size_t n);
-/*copies n bytes from memory area src to memory area dst, areas may overlap*/
-void				*ft_memmove(void *dst, const void *src, size_t len);
-/*copies n characters from the string src to the string dst*/
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
-/*append the string src to the end of dst (up to dstsize - strlen(dst) - 1)*/
-size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
-/*capitalizes the letter c*/
+/*verify if a char is a '+' or '-' (returns 1 if true, 0 if false)*/
+int					ft_isposneg(int c);
+/*verify if a char is a whitespace (returns 1 if true, 0 if false)*/
+int					ft_iswhitespace(int c);
+/*verify if a char is a lowercase (returns 1 if true, 0 if false)*/
+int					ft_islower(int c);
+/*verify if a char is a upercase (returns 1 if true, 0 if false)*/
+int					ft_isupper(int c);
+/*convert a char to lowercase*/
 int					ft_toupper(int c);
-/*lowercases the letter c*/
+/*convert a char to upercase*/
 int					ft_tolower(int c);
-/*returns a pointer to the first occurrence of the character c in the string s*/
+
+//****************************************************************************//
+// ------------------------------ STRING UTILS ------------------------------ //
+//****************************************************************************//
+
+/*calculate the length of a string*/
+size_t				ft_strlen(const char *str);
+/*copy a src string to dest with a maxlen*/
+size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
+/*concatenate a src string to dest with a maxlen*/
+size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
+/*search for a char in a string and return a pointer to the first occurence*/
 char				*ft_strchr(const char *s, int c);
-/*returns a pointer to the last occurrence of the character c in the string s*/
+/*search for a char in a string and return a pointer to the last occurence*/
 char				*ft_strrchr(const char *s, int c);
-/*compares the first n bytes of s1 and s2*/
-int					ft_strncmp(const char *s1, const char *s2, size_t n);
-/*returns a pointer to the first occurence of c in s, NULL if c is not found*/
-void				*ft_memchr(const void *s, int c, size_t n);
-/*compares the first n bytes of s1 and s2*/
-int					ft_memcmp(const void *s1, const void *s2, size_t n);
-/*locates the first occurrence of the string needle in the string haystack*/
+/*search for a string in a string and return a pointer to the 1st occurence*/
 char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
-/*converts a string to an integer*/
-int					ft_atoi(const char *str);
-/*allocates count * size bytes to 0 and returns a ptr to the allocated memory*/
-void				*ft_calloc(size_t count, size_t size);
-/*duplicates the string s1 and returns a pointer to the new string*/
+/*duplicate a string*/
 char				*ft_strdup(const char *s1);
-
-//****************************************************************************//
-// --------- GIVEN FUNCTIONS WHICH ARE PART OF THE STANDARD LIBRARY --------- //
-//****************************************************************************//
-
-/*returns a string of size len starting at index start of string s*/
-char				*ft_substr(char const *s, unsigned int start, size_t len);
-/*creates a new string resulting from the concatenation of s1 and s2*/
+/*join two strings*/
 char				*ft_strjoin(char const *s1, char const *s2);
-/*retturns the string trimmed s1 trimed at the beginning and end by set*/
-char				*ft_strtrim(char const *s1, char const *set);
-/*splits the string s using the character c as a delimiter*/
+/*split a string in an array of strings separated by a single char*/
 char				**ft_split(char const *s, char c);
-/*transforms the integer n into a string and returns the string*/
+/*split a string in an array of strings separated by a specific list of chars*/
+char				**ft_split_multi(char const *s, char *c);
+/*extracts a substring from a given string starting at a specified index for
+a specified length*/
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+/*trim a string from a set of characters at the beginning and the end*/
+char				*ft_strtrim(char const *s1, char const *set);
+/*transforms an integer to a string*/
+int					ft_strncmp(const char *s1, const char *s2, size_t n);
+/*verify if last characters of a string are equal to another string*/
+int					ft_strcmp(char *s1, char *s2);
+/*compares two strings and returns 0 if they are identical*/
+int					check_last_characters(char *str, char *last);
+/*counts the number of words in a string separated by a single char*/
+int					count_words(char const *str, char charset);
+/*counts the number of words in a string separated by a specific list of chars*/
+int					count_words_sep(char const *str, char *charset);
+/*checks if a character is in a string*/
+int					is_in_string(char c, char *str);
+/*transform an integer to a string*/
 char				*ft_itoa(int n);
-/*returns a string created from the application of the function f to a string*/
-char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-/*applies the function f to each character of the string passed as argument*/
+/*transforms a nuumber in a string to an integer*/
+int					ft_atoi(const char *str);
+/*transforms a nuumber in a string to a long long integer*/
+long long			ft_atoll(const char *str);
+/*reads a line from a file descriptor*/
+char				*get_next_line(int fd);
+/*iterate over a string and apply a function to each character*/
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
-/*writes the character c to the file descriptor fd*/
-void				ft_putchar_fd(char c, int fd);
-/*writes the string s to the file descriptor fd*/
-void				ft_putstr_fd(char *s, int fd);
-/*writes the string s followed by a newline to the file descriptor fd*/
-void				ft_putendl_fd(char *s, int fd);
-/*writes the integer n to the file descriptor fd*/
-void				ft_putnbr_fd(int n, int fd);
+/*create a new string by applying a function to each character of a string*/
+char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 //****************************************************************************//
-// ------------------------------- BONUS PART ------------------------------- //
+// ------------------------------ MEMORY UTILS ------------------------------ //
+//****************************************************************************//
+
+/*allocate memory for a string and initialize it with '\0'*/
+void				*ft_calloc(size_t count, size_t size);
+/*set a memory block of size len to 0*/
+void				ft_bzero(void *s, size_t n);
+/*returns a pointer to a memory block of size len set to a specific value c*/
+void				*ft_memset(void *b, int c, size_t len);
+/*copies a memory block from src to dest, and returns a pointer to dest.
+undifined behavior if the memory blocks overlap*/
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+/*copies a memory block from src to dest, and returns a pointer to dest.
+the memory blocks can overlap*/
+void				*ft_memmove(void *dst, const void *src, size_t len);
+/*returns a pointer to the first occurence of a byte c in a memory block*/
+void				*ft_memchr(const void *s, int c, size_t n);
+/*compares byte strings s1 and s2. returns 0 if they are identical*/
+int					ft_memcmp(const void *s1, const void *s2, size_t n);
+/*frees an array of strings*/
+void				ft_free_tab(char **tab);
+
+//****************************************************************************//
+// ------------------------------ PRINT UTILS ------------------------------- //
+//****************************************************************************//
+
+/*recreate the printf function*/
+int					ft_printf(const char *str, ...);
+/*writes a char to a file descriptor*/
+int					ft_putchar_fd(char c, int fd);
+/*writes a char to the standard output*/
+int					ft_putchar(char c);
+/*writes a string to a file descriptor*/
+int					ft_putstr_fd(char *s, int fd);
+/*writes a string to the standard output*/
+int					ft_putstr(char *s);
+/*writes a string to a file descriptor followed by a newline*/
+int					ft_putendl_fd(char *s, int fd);
+/*writes a number to a file descriptor*/
+int					ft_putnbr_fd(int n, int fd);
+/*writes a number to the standard output*/
+int					ft_putnbr(int n);
+/*writes a number to rhe standard output in a specific base*/
+int					ft_putnbr_base(unsigned long long nbr, char *base);
+
+//****************************************************************************//
+// ------------------------------ MATHS UTILS ------------------------------- //
+//****************************************************************************//
+
+/*swaps two variables*/
+void				ft_swap(void *a, void *b, size_t size);
+/*swaps two integers*/
+void				ft_int_xor_swap(int *a, int *b);
+/*returns the rounded value of a float*/
+int					ft_round(float num);
+/*returns the maximum value between two integers*/
+int					ft_max(int nb1, int nb2);
+/*returns the minimum value between two integers*/
+int					ft_min(int nb1, int nb2);
+
+//****************************************************************************//
+// ------------------------------ LINKED LIST ------------------------------- //
 //****************************************************************************//
 
 typedef struct s_list
@@ -110,31 +188,15 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-/*allocates memory for a new element and initializes its content*/
 t_list				*ft_lstnew(void *content);
-/*adds the element new at the beginning of the list*/
 void				ft_lstadd_front(t_list **alst, t_list *new);
-/*returns the number of elements in the list*/
 int					ft_lstsize(t_list *lst);
-/*returns the last element of the list*/
 t_list				*ft_lstlast(t_list *lst);
-/*adds the element new at the end of the list*/
 void				ft_lstadd_back(t_list **alst, t_list *new);
-/*deletes and frees the memory of the element passed as argument*/
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
-/*deletes and frees the memory of the elements of the list*/
 void				ft_lstclear(t_list **lst, void (*del)(void *));
-/*applies the function f to the content of each element of the list*/
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-/*returns a new list resulting from the application of the function f
-to the list*/
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-
-//****************************************************************************//
-// --------------------------------- MY OWN --------------------------------- //
-//****************************************************************************//
-
-int					ft_strcmp(char *s1, char *s2);
 
 #endif

@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   count_words.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 20:24:29 by trolland          #+#    #+#             */
-/*   Updated: 2023/12/02 16:37:58 by trolland         ###   ########.fr       */
+/*   Created: 2024/01/12 17:23:10 by trolland          #+#    #+#             */
+/*   Updated: 2024/05/19 17:48:34 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	count_words(char const *str, char charset)
 {
-	int	count;
+	int	i;
+	int	expecting;
+	int	word_count;
 
-	count = 0;
-	if (n == -2147483648)
-		return (ft_putstr_fd("-2147483648", fd));
-	else
+	i = 0;
+	expecting = 1;
+	word_count = 0;
+	while (str[i])
 	{
-		if (n < 0)
+		if (str[i] != charset && expecting == 1)
 		{
-			n = -n;
-			count += ft_putchar_fd('-', fd);
+			word_count++;
+			expecting = 0;
 		}
-		if (n > 9)
-			count += ft_putnbr_fd(n / 10, fd);
-		count += ft_putchar_fd(n % 10 + 48, fd);
+		if (str[i] == charset && expecting == 0)
+			expecting = 1;
+		i++;
 	}
-	return (count);
+	return (word_count);
 }

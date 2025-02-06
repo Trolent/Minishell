@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 18:17:32 by trolland          #+#    #+#             */
-/*   Updated: 2023/11/06 16:57:50 by trolland         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:03:02 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	*ft_calloc(size_t count, size_t size)
 		count = 1;
 		size = 1;
 	}
+	if ((int)(size * count) <= 0)
+		return (NULL);
 	calloc = malloc(size * count);
 	if (!calloc)
 		return (NULL);

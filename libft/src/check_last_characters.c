@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   check_last_characters.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 20:24:29 by trolland          #+#    #+#             */
-/*   Updated: 2023/12/02 16:37:58 by trolland         ###   ########.fr       */
+/*   Created: 2023/08/31 15:20:04 by trolland          #+#    #+#             */
+/*   Updated: 2024/02/27 16:13:30 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+int	check_last_characters(char *str, char *last)
 {
-	int	count;
+	unsigned char	u1;
+	unsigned char	u2;
+	size_t			str_len;
+	size_t			last_len;
 
-	count = 0;
-	if (n == -2147483648)
-		return (ft_putstr_fd("-2147483648", fd));
-	else
+	str_len = ft_strlen(str);
+	last_len = ft_strlen(last);
+	if (str_len <= last_len)
+		return (0);
+	while (last_len > 0)
 	{
-		if (n < 0)
-		{
-			n = -n;
-			count += ft_putchar_fd('-', fd);
-		}
-		if (n > 9)
-			count += ft_putnbr_fd(n / 10, fd);
-		count += ft_putchar_fd(n % 10 + 48, fd);
+		u1 = str[str_len - 1];
+		u2 = last[last_len - 1];
+		if (u1 != u2)
+			return (0);
+		str_len--;
+		last_len--;
 	}
-	return (count);
+	return (1);
 }

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_multi.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:40:00 by trolland          #+#    #+#             */
-/*   Updated: 2024/05/30 09:55:40 by trolland         ###   ########.fr       */
+/*   Updated: 2024/05/07 18:48:31 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_is_charset(char c, char charset)
+static int	ft_is_charset_multi(char c, char *charset)
 {
-	if (c == charset)
-		return (0);
+	int	i;
+
+	i = 0;
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
-static int	ft_count_words_one_char(char const *str, char charset)
+static int	ft_count_words_multi(char const *str, char *charset)
 {
 	int	i;
 	int	expecting;
@@ -30,19 +37,19 @@ static int	ft_count_words_one_char(char const *str, char charset)
 	word_count = 0;
 	while (str[i])
 	{
-		if (ft_is_charset(str[i], charset) && expecting == 1)
+		if (ft_is_charset_multi(str[i], charset) && expecting == 1)
 		{
 			word_count++;
 			expecting = 0;
 		}
-		if (!ft_is_charset(str[i], charset) && expecting == 0)
+		if (!ft_is_charset_multi(str[i], charset) && expecting == 0)
 			expecting = 1;
 		i++;
 	}
 	return (word_count);
 }
 
-static char	*ft_create_sub_tab(char const *s, char c, int *pos)
+static char	*ft_create_sub_tab(char const *s, char *c, int *pos)
 {
 	int		len;
 	int		k;
@@ -50,9 +57,9 @@ static char	*ft_create_sub_tab(char const *s, char c, int *pos)
 
 	len = 0;
 	k = 0;
-	while (!ft_is_charset(s[*pos], c))
+	while (!ft_is_charset_multi(s[*pos], c))
 		(*pos)++;
-	while (ft_is_charset(s[*pos + len], c) && s[*pos + len])
+	while (ft_is_charset_multi(s[*pos + len], c) && s[*pos + len])
 		len++;
 	tab = malloc(sizeof(char) * len + 1);
 	if (!tab)
@@ -67,7 +74,7 @@ static char	*ft_create_sub_tab(char const *s, char c, int *pos)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_multi(char const *s, char *c)
 {
 	int		i;
 	int		j;
@@ -78,8 +85,8 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	j = 0;
-	word_count = (ft_count_words_one_char(s, c));
-	split = ft_calloc(sizeof(char *), (word_count + 1));
+	word_count = (ft_count_words_multi(s, c));
+	split = malloc(sizeof(char *) * (word_count + 1));
 	if (!split)
 		return (NULL);
 	while (i < word_count)

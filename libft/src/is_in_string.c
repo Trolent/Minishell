@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   is_in_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/04 20:24:29 by trolland          #+#    #+#             */
-/*   Updated: 2023/12/02 16:37:58 by trolland         ###   ########.fr       */
+/*   Created: 2024/04/02 11:49:36 by trolland          #+#    #+#             */
+/*   Updated: 2024/05/19 18:15:42 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_putnbr_fd(int n, int fd)
+int	is_in_string(char c, char *str)
 {
-	int	count;
+	int	i;
 
-	count = 0;
-	if (n == -2147483648)
-		return (ft_putstr_fd("-2147483648", fd));
-	else
-	{
-		if (n < 0)
-		{
-			n = -n;
-			count += ft_putchar_fd('-', fd);
-		}
-		if (n > 9)
-			count += ft_putnbr_fd(n / 10, fd);
-		count += ft_putchar_fd(n % 10 + 48, fd);
-	}
-	return (count);
+	i = -1;
+	while (str[++i])
+		if (str[i] == c)
+			return (i);
+	return (-1);
 }

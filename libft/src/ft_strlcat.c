@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 13:35:31 by trolland          #+#    #+#             */
-/*   Updated: 2023/09/28 16:57:12 by trolland         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:12:24 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	dst_len;
 	size_t	src_len;
 
-	i = 0;
-	j = 0;
 	src_len = ft_strlen(src);
 	if (dstsize == 0)
 		return (src_len + dstsize);
