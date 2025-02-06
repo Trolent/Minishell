@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gschwand <gschwand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 14:33:23 by gschwand          #+#    #+#             */
-/*   Updated: 2024/09/25 17:48:48 by gschwand         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:30:26 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-void	ft_lstdelone_env(t_env **env, t_env *delone)
+static void	ft_lstdelone_env(t_env **env, t_env *delone)
 {
 	t_env	*tmp;
 
@@ -25,31 +25,45 @@ void	ft_lstdelone_env(t_env **env, t_env *delone)
 		free(delone);
 		return ;
 	}
-	while (delone != tmp->next)
+	while (tmp && tmp->next != delone)
 		tmp = tmp->next;
-	tmp->next = tmp->next->next;
-	free(delone->key);
-	free(delone->value);
-	free(delone);
+	if (tmp && tmp->next == delone)
+	{
+		tmp->next = delone->next;
+		free(delone->key);
+		free(delone->value);
+		free(delone);
+	}
 }
 
-int	unset_env(char **tab, t_env **env)
+static void	unset_env_var(char *var, t_env **env)
 {
-	int		i;
 	t_env	*tmp;
+	t_env	*next;
 
-	i = 1;
 	tmp = *env;
-	while (tab[i] && tmp)
+	while (tmp)
 	{
-		if (!ft_strcmp(tab[i], tmp->key))
+		next = tmp->next;
+		if (!ft_strcmp(var, tmp->key))
 		{
 			ft_lstdelone_env(env, tmp);
 			tmp = *env;
-			i++;
 		}
 		else
-			tmp = tmp->next;
+			tmp = next;
+	}
+}
+
+static int	unset_env(char **tab, t_env **env)
+{
+	int	i;
+
+	i = 1;
+	while (tab[i])
+	{
+		unset_env_var(tab[i], env);
+		i++;
 	}
 	return (0);
 }
