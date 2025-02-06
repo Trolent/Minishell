@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   wait_pid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 16:15:06 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/20 18:03:28 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:10:29 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
-#include "setup.h"
 
-void	print_error(int status)
+static void	print_error(int status)
 {
 	if (WTERMSIG(status) == SIGINT)
 		write(2, "\n", 1);
@@ -23,7 +22,7 @@ void	print_error(int status)
 		write(2, "Bus error (core dumped)\n", 25);
 }
 
-static void	pip_wait_children(t_data *data)
+static void	wait_for_children(t_data *data)
 {
 	int			status;
 	t_pidlst	*node;
@@ -53,6 +52,6 @@ int	ft_wait_pid(t_ast *ast, t_data *data)
 	data->status = exec_recursion(ast->wait_next, data);
 	if (!data->pidlst)
 		return (data->status);
-	pip_wait_children(data);
+	wait_for_children(data);
 	return (data->status);
 }

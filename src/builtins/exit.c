@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:04:41 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/06 13:27:15 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:59:40 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,17 @@
 static int	check_only_digit(char *str)
 {
 	int	i;
-	int	n;
 
 	i = 0;
-	n = 0;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (str[0] == '-')
-		n = 1;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
 			return (2);
 		i++;
 	}
-	if (check_overflow(str + 1, n))
+	if (check_overflow(str))
 		return (2);
 	return (0);
 }

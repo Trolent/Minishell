@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:21 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 13:36:46 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:37:53 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_change_value(t_env *node, char *str);
 int		check_alnum_str(char *str);
 int		unset(char **tab, t_data *data);
 int		ft_exit(char **tab, t_data *data);
-int		check_overflow(char *str, int n);
+int		check_overflow(char *str);
 char	*remove_quotes(char *str);
 
 #endif
