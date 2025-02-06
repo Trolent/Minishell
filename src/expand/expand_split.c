@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   expand_split.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gschwand <gschwand@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 11:35:52 by gschwand          #+#    #+#             */
-/*   Updated: 2024/09/27 17:52:30 by gschwand         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:25:06 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
-
-static int	ft_whitespace(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
-		|| c == '\r')
-		return (1);
-	return (0);
-}
 
 t_files	*create_new_file_node(char *name)
 {
@@ -60,12 +52,12 @@ t_files	*ft_split_to_list(char *str)
 		return (NULL);
 	while (*str)
 	{
-		while (*str && ft_whitespace(*str))
+		while (*str && ft_iswhitespace(*str))
 			str++;
 		if (*str)
 		{
 			start = str;
-			while (*str && !ft_whitespace(*str))
+			while (*str && !ft_iswhitespace(*str))
 				str++;
 			word = strndup(start, str - start);
 			if (!word)

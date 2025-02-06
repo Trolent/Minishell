@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lst_file_utils3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:39:17 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/19 14:23:47 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:22:30 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	ft_sort_alpha_files(t_files **files)
 		tmp2 = tmp->next;
 		while (tmp2)
 		{
-			if (ft_strcasecmp(tmp->name, tmp2->name) > 0)
+			if (ft_strcmp(tmp->name, tmp2->name) > 0)
 			{
 				tmp3 = tmp->name;
 				tmp->name = tmp2->name;

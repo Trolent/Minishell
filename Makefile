@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/06 16:16:50 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/06 16:22:14 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,6 @@ SRC		:=	main.c								\
 			expand/sort_files.c 				\
 			expand/wildcard.c					\
 			expand/var_copy.c					\
-			expand/wildcard_utils.c				\
 			exec/command_node.c					\
 			exec/command_utils.c				\
 			exec/exec_cmd.c 					\
