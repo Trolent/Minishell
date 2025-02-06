@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_node.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:53:21 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/21 10:49:50 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:07:21 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	execute_prog(t_ast *ast, t_data *data)
 
 	pid = fork();
 	if (pid < 0)
-		return (perror("minishell: execute_prog"), 1);
+		return (perror("minishell: fork"), 1);
 	if (!pid)
 	{
 		signal(SIGINT, SIG_DFL);

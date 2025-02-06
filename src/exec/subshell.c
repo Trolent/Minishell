@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   subshell.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 12:20:00 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/20 18:06:26 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:07:32 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	subshell_node(t_ast *ast, t_data *data)
 
 	data->fork = true;
 	pid = fork();
-	if (pid < 0)
-		return (perror("minishell: subshell_node"), 1);
-	if (!pid)
+	if (pid < 0) 
+		return (perror("minishell: fork"), 1);
+	if (pid == 0) 
 		subshell_child(ast, data);
 	else
 	{
