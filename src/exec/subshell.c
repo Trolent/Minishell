@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/22 12:20:00 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/06 15:07:32 by trolland         ###   ########.fr       */
+/*   Created: 2025/02/06 15:08:40 by trolland          #+#    #+#             */
+/*   Updated: 2025/02/06 15:08:46 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	subshell_node(t_ast *ast, t_data *data)
 
 	data->fork = true;
 	pid = fork();
-	if (pid < 0) 
+	if (pid < 0)
 		return (perror("minishell: fork"), 1);
-	if (pid == 0) 
+	if (pid == 0)
 		subshell_child(ast, data);
 	else
 	{
