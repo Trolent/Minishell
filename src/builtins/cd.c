@@ -3,35 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:23:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/12/21 15:02:36 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 13:52:40 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
 #include "env.h"
+#include "minishell.h"
 
-void	change_pwd(t_env **env)
+static void	change_pwd(t_env **env)
 {
-	t_env	*v1;
-	t_env	*v2;
+	t_env	*oldpwd;
+	t_env	*pwd;
 
-	v1 = env_get_real_node(env, "OLDPWD");
-	v2 = env_get_real_node(env, "PWD");
-	if (v1)
+	oldpwd = env_get_real_node(env, "OLDPWD");
+	pwd = env_get_real_node(env, "PWD");
+	if (oldpwd)
 	{
-		if (v1->value)
-		{
-			free(v1->value);
-			v1->value = NULL;
-		}
-		if (v2)
-			v1->value = v2->value;
+		free(oldpwd->value);
+		if (pwd)
+			oldpwd->value = pwd->value;
+		else
+			oldpwd->value = NULL;
 	}
-	if (v2)
-		v2->value = getcwd(NULL, 0);
+	if (pwd)
+		pwd->value = getcwd(NULL, 0);
+}
+
+static char	*get_home_directory(t_env **env, t_data *data)
+{
+	char	*home;
+
+	home = env_get_value(*env, "HOME", data);
+	if (!home)
+		ft_dprintf(2, "minishell: cd: HOME not set\n");
+	return (home);
 }
 
 int	builtin_cd(t_data *data, char **args, t_env **env)
@@ -40,9 +48,9 @@ int	builtin_cd(t_data *data, char **args, t_env **env)
 
 	if (!args[1])
 	{
-		path = env_get_value(*env, "HOME", data);
+		path = get_home_directory(env, data);
 		if (!path)
-			return (ft_dprintf(2, "minishell: cd: HOME not set"), 1);
+			return (1);
 	}
 	else if (args[2])
 		return (ft_dprintf(2, "minishell: cd: too many arguments\n"), 1);
