@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 13:35:55 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:00:55 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,6 @@ typedef struct s_files
 // expand.c
 char				**expand_tab_of_cmd(char **tab_cmd, t_data *data);
 int					expand_str(char *str, t_data *data, t_files **files);
-
-// expand_var.c
-int					copy_var(char *str, int *i, t_files **files, t_data *data);
-int					check_var(char *str, t_data *data);
 
 // expand_quotes_utils.c
 int					ft_find_chr(char *str, char c);
