@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_files.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 10:22:33 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/19 14:23:55 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:15:19 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_strcmp_recursive(char *namefile, char *str)
 	}
 	if (!i)
 		return (0);
-	if (ft_find_chr(str + i, '*'))
+	if (ft_strchr(str + i, '*'))
 	{
 		if (i == 1)
 			i = ft_strcmp_recursive(namefile, str + i);

@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/06 14:02:16 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/06 16:16:50 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,6 @@ SRC		:=	main.c								\
 			expand/expand_split.c				\
 			expand/expand_string.c				\
 			expand/expand_files.c				\
-			expand/expand_quotes_utils.c		\
 			expand/expand_here_doc.c			\
 			expand/lst_file_utils.c				\
 			expand/lst_file_utils2.c			\

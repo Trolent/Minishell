@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:12:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/21 10:49:56 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/06 16:16:18 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ void	expansion_routine(char *str, t_data *data, t_files **head)
 	fusion = expand_string(str, data, &sublst);
 	if (!fusion)
 		return (files_clear(&sublst));
-	if (ft_find_chr_exec(fusion, '*') == 1)
+	if (ft_strchr(fusion, '*'))
 	{
 		fusion = expand_wildcard(fusion);
-		if (ft_find_chr_exec(fusion, '\n'))
+		if (ft_strchr(fusion, '\n'))
 		{
 			send_main_lst(fusion, head);
 			return ;
