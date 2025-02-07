@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:12:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:17:05 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:14:23 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	var_copy(char *str, int *i, t_data *data, t_files **lst)
 	files_addback(lst, files_new(value));
 }
 
-void	send_main_lst(char *str, t_files **head)
+static void	send_main_lst(char *str, t_files **head)
 {
 	int		i;
 	char	**strs;
@@ -72,7 +72,7 @@ void	send_main_lst(char *str, t_files **head)
 	free(strs);
 }
 
-void	expansion_routine(char *str, t_data *data, t_files **head)
+static void	expansion_routine(char *str, t_data *data, t_files **head)
 {
 	t_files	*sublst;
 	char	*fusion;

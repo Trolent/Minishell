@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_here_doc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 19:39:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 19:27:11 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:17:00 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	regular_copy_len(char *str, int j)
 	return (len);
 }
 
-void	regular_copy_hd(char *str, int *i, t_files **lst)
+static void	regular_copy_hd(char *str, int *i, t_files **lst)
 {
 	int		j;
 	int		len;

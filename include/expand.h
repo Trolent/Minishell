@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 15:45:44 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:18:02 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ int					ifs_countword(char *str);
 int					is_ifs(char c);
 char				*ifs_copy(char *str);
 char				*expand_string(char *str, t_data *data, t_files **head);
-void				del_files_not_hidden(t_files **files);
 void				free_tab(char **tab);
 
 #endif

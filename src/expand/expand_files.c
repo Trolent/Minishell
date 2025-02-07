@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_files.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:13:00 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 19:27:18 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:16:15 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "minishell.h"
 #include "token.h"
 
-int	sq_len(char *str)
+static int	sq_len(char *str)
 {
 	int	i;
 	int	len;

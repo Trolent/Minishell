@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:21:15 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:40:03 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:13:28 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "expand.h"
 #include "env.h"
 
-int	files_wordcount(t_files *lst)
+static int	files_wordcount(t_files *lst)
 {
 	int	i;
 

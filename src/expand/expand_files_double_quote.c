@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_files_double_quote.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:01:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 19:28:14 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:15:47 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "minishell.h"
 #include "token.h"
 
-int	dq_len(char *str)
+static int	dq_len(char *str)
 {
 	int	i;
 	int	len;
@@ -38,7 +38,7 @@ int	dq_len(char *str)
 	return (len);
 }
 
-void	dq_copy_tmp(char *str, int *i, t_files **tmp)
+static void	dq_copy_tmp(char *str, int *i, t_files **tmp)
 {
 	int		j;
 	int		len;
