@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 16:17:41 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:54:47 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,27 +55,13 @@ char				*write_files(t_files *files);
 void				ft_sort_alpha_files(t_files **files);
 
 // sort_files.c
-int					ft_strcmp_end_start_wildcard(char *file, char *str);
-void				ft_lstcomp_wildcard(t_files **files, char *str);
 void				ft_strlcat_files(char *dst, const char *src, size_t lenres);
 
 // wildcard.c
-char				**ft_wildcard(char **tab_cmd);
 char				*expand_wildcard(char *str);
-void				free_tab(char **tab);
 
 // wildcard_utils.c
-int					ft_strcasecmp(char *s1, char *s2);
-
-// expand_first_cmd.c
-char				**expand_first_cmd(char **tab_cmd, t_data *data);
-
-// expand_first_cmd2.c
-t_files				*tab_to_lst_files(t_files **files, char **tab);
-char				**strdup_tab(char **tab);
-
-// wildcard_first_cmd.c
-char				**ft_wildcard_first_cmd(char **cmd);
+void free_curr_name(t_files	*curr);
 
 // expand_files.c
 void				dq_copy(char *str, int *i, t_data *data, t_files **lst);
