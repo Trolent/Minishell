@@ -6,15 +6,15 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:53:30 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 10:00:49 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:13:45 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPE_H
 # define TYPE_H
 
-# include <stdbool.h>
 # include <signal.h>
+# include <stdbool.h>
 # include <termios.h>
 
 /*#############################################################################
@@ -23,10 +23,10 @@
 
 typedef struct s_env
 {
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}	t_env;
+	char					*key;
+	char					*value;
+	struct s_env			*next;
+}							t_env;
 
 typedef enum e_node
 {
@@ -36,7 +36,7 @@ typedef enum e_node
 	PIPE_NODE,
 	SUBSHELL,
 	WAIT_NODE
-}	t_node;
+}							t_node;
 
 typedef enum e_token
 {
@@ -53,41 +53,41 @@ typedef enum e_token
 	OR = 1002,
 	APPEND = 1003,
 	HERE_DOC = 1004
-}	t_type;
+}							t_type;
 
 typedef struct s_token
 {
-	int				type;
-	int				fd;
-	char			*value;
-	struct s_token	*next;
-	struct s_token	*prev;
-}	t_token;
+	int						type;
+	int						fd;
+	char					*value;
+	struct s_token			*next;
+	struct s_token			*prev;
+}							t_token;
 
 typedef struct s_cmdlist
 {
-	t_type				type;
-	int					fd;
-	char				*str;
-	struct s_cmdlist	*next;
-}	t_cmdlst;
+	t_type					type;
+	int						fd;
+	char					*str;
+	struct s_cmdlist		*next;
+}							t_cmdlst;
 
 typedef struct s_pidlst
 {
-	pid_t			pid;
-	struct s_pidlst	*next;
-}	t_pidlst;
+	pid_t					pid;
+	struct s_pidlst			*next;
+}							t_pidlst;
 
 typedef struct s_fdlst
 {
-	int				fd;
-	bool			close_in_child;
-	struct s_fdlst	*next;
-}	t_fdlst;
+	int						fd;
+	bool					close_in_child;
+	struct s_fdlst			*next;
+}							t_fdlst;
 
 typedef struct s_ast
 {
-	t_node	type;
+	t_node					type;
 	union
 	{
 		struct
@@ -121,21 +121,21 @@ typedef struct s_ast
 			struct s_ast	*wait_next;
 		};
 	};
-}	t_ast;
+}							t_ast;
 
 typedef struct s_data
 {
-	bool				fork;
-	bool				subshell;
-	int					status;
-	char				*hardpath;
-	t_ast				*ast_root;
-	t_pidlst			*pidlst;
-	t_fdlst				*fdlst;
-	t_env				*env;
-	t_env				*export;
-	struct sigaction	sa;
-	struct termios		term;
-}	t_data;
+	bool					fork;
+	bool					subshell;
+	int						status;
+	char					*hardpath;
+	t_ast					*ast_root;
+	t_pidlst				*pidlst;
+	t_fdlst					*fdlst;
+	t_env					*env;
+	t_env					*export;
+	struct sigaction		sa;
+	struct termios			term;
+}							t_data;
 
 #endif

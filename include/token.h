@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:46:50 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:33:25 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:18:08 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 # include "minishell.h"
 # define HD_ERROR "minishell: warning: here-document at \
 line %d delimited by end-of-file (wanted `%s')\n"
-
-/*#############################################################################
-#                                  debugging.c                                #
-#############################################################################*/
-
-char	*etoa(t_type c);
-void	print_token(t_token *tk);
 
 /*#############################################################################
 #                                  definitions2.c                             #

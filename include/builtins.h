@@ -6,31 +6,65 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:21 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 10:03:51 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:05:38 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
-# include "minishell.h"
 # include "env.h"
+# include "minishell.h"
+# include "token.h"
 
 # define PWDERROR "minishell: pwd: error retrieving\
  current directory: getcwd:\
  cannot access parent directories"
 
+/*#############################################################################
+#                                   echo.c                                    #
+#############################################################################*/
+
 int		builtin_echo(char **strs);
+
+/*#############################################################################
+#                                    cd.c                                     #
+#############################################################################*/
+
 int		builtin_cd(t_data *data, char **args, t_env **env);
-int		check_export(char *arg, t_data *data);
-int		ft_pwd(char **args, t_env *env);
-int		ft_env(char **args, t_env *env);
+
+/*#############################################################################
+#                                  export.c                                   #
+#############################################################################*/
+
 int		ft_export(char **args, t_data *data);
+int		check_export(char *arg, t_data *data);
 int		ft_change_value(t_env *node, char *str);
 int		check_alnum_str(char *str);
+
+/*#############################################################################
+#                                    pwd.c                                    #
+#############################################################################*/
+
+int		ft_pwd(char **args, t_env *env);
+
+/*#############################################################################
+#                                    env.c                                    #
+#############################################################################*/
+
+int		ft_env(char **args, t_env *env);
+
+/*#############################################################################
+#                                   unset.c                                   #
+#############################################################################*/
+
 int		unset(char **tab, t_data *data);
+
+/*#############################################################################
+#                                   exit.c                                    #
+#############################################################################*/
+
 int		ft_exit(char **tab, t_data *data);
 int		check_overflow(char *str);
-char	*remove_quotes(char *str);
 
 #endif

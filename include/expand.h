@@ -6,12 +6,13 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 16:20:48 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:17:22 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EXPAND_H
 # define EXPAND_H
+
 # include "minishell.h"
 
 typedef struct s_files
@@ -21,47 +22,87 @@ typedef struct s_files
 	struct s_files	*next;
 }					t_files;
 
-// expand_debugg.c
-void				print_tab(char **tab);
-void				ft_print_lst_files(t_files *files);
+/*#############################################################################
+#                              lst_file_utils.c                               #
+#############################################################################*/
 
-// lst_file_utils.c
-t_files				*files_new(char *str);
-t_files				*files_new_dup(char *str);
-void				files_addback(t_files **alst, t_files *new);
+t_files	*files_new(char *str);
+t_files	*files_new_dup(char *str);
+void	files_addback(t_files **alst, t_files *new);
 
-// lst_file_utils2.c
-void				ft_free_lst_files_expand(t_files **files);
+/*#############################################################################
+#                               wildcard.c                                    #
+#############################################################################*/
 
-// sort_files.c
-void				ft_strlcat_files(char *dst, const char *src, size_t lenres);
+char	*expand_wildcard(char *str);
 
-// wildcard.c
-char				*expand_wildcard(char *str);
+/*#############################################################################
+#                             wildcard_utils.c                                #
+#############################################################################*/
 
-// wildcard_utils.c
-void				free_curr_name(t_files *curr);
-char				*write_files(t_files *files);
+void	free_curr_name(t_files *curr);
+void	ft_strlcat_files(char *dst, const char *src, size_t lenres);
+char	*write_files(t_files *files);
+void	ft_free_lst_files_expand(t_files **files);
 
-// expand_files.c
-void				dq_copy(char *str, int *i, t_data *data, t_files **lst);
-char				*expand_filename(char *str, t_data *data);
-void				files_clear(t_files **head);
-int					check_decla_var(char *str);
-char				*files_join(t_files **lst);
-void				var_copy(char *str, int *i, t_data *data, t_files **lst);
-void				var_copy_redir(char *str, int *i, t_data *data,
-						t_files **lst);
-void				status_copy(int *i, t_data *data, t_files **head);
-void				sq_copy(char *str, int *i, t_files **lst);
-void				regular_copy(char *str, int *i, t_files **lst);
-void				dq_copy(char *str, int *i, t_data *data, t_files **lst);
-char				*expand_hd(char *str, t_data *data);
-void				files_eat(t_files **node);
-char				**build_cmd_array(t_files **head);
-char				**expand_cmd(char **strs, t_data *data);
-char				*ifs_copy(char *str);
-char				*expand_string(char *str, t_data *data, t_files **head);
-void				free_tab(char **tab);
+/*#############################################################################
+#                             expand_files.c                                  #
+#############################################################################*/
+
+void	sq_copy(char *str, int *i, t_files **lst);
+void	regular_copy(char *str, int *i, t_files **lst);
+char	*expand_filename(char *str, t_data *data);
+
+/*#############################################################################
+#                         expand_files_double_quote.c                         #
+#############################################################################*/
+
+void	dq_copy(char *str, int *i, t_data *data, t_files **lst);
+
+/*#############################################################################
+#                             expand_here_doc.c                               #
+#############################################################################*/
+
+char	*expand_hd(char *str, t_data *data);
+
+/*#############################################################################
+#                             expand_files_utils.c                            #
+#############################################################################*/
+
+void	files_clear(t_files **head);
+void	files_eat(t_files **node);
+char	*files_join(t_files **lst);
+
+/*#############################################################################
+#                             expand_2.c                                      #
+#############################################################################*/
+
+char	**expand_cmd(char **strs, t_data *data);
+void	var_copy(char *str, int *i, t_data *data, t_files **lst);
+
+/*#############################################################################
+#                             expand_2_utils.c                                #
+#############################################################################*/
+
+char	**build_cmd_array(t_files **head);
+
+/*#############################################################################
+#                             ifs.c                                           #
+#############################################################################*/
+
+char	*ifs_copy(char *str);
+
+/*#############################################################################
+#                             expand_string.c                                 #
+#############################################################################*/
+
+char	*expand_string(char *str, t_data *data, t_files **head);
+
+/*#############################################################################
+#                             var_copy.c                                      #
+#############################################################################*/
+
+void	var_copy_redir(char *str, int *i, t_data *data, t_files **lst);
+void	status_copy(int *i, t_data *data, t_files **head);
 
 #endif

@@ -6,12 +6,11 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 10:06:38 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/07 16:20:38 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:05:14 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
-
 
 void	files_addback(t_files **alst, t_files *new)
 {
