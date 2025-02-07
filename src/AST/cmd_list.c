@@ -3,24 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:22:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/25 17:11:52 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:31:12 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "AST.h"
-
-void	cmdlst_print(t_cmdlst *lst)
-{
-	while (lst)
-	{
-		ft_dprintf(STDERR_FILENO, "%s\n", lst->str);
-		lst = lst->next;
-	}
-}
 
 t_cmdlst	*cmdlst_last(t_cmdlst *lst)
 {

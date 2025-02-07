@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AST_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 12:42:52 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/03 12:53:48 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:37:25 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,4 @@ void	ast_free(t_ast *ast)
 		ast_free_first_half(ast);
 	else
 		ast_free_second_half(ast);
-}
-
-void	next_token(t_token **tk)
-{
-	if (!(*tk) || !tk)
-		return ;
-	*tk = (*tk)->next;
 }

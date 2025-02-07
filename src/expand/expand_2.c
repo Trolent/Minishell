@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:12:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/06 16:16:18 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:17:05 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "expand.h"
 #include "env.h"
 
-char	*get_key(char *str, int i)
+static char	*get_key(char *str, int i)
 {
 	int		len;
 	char	*key;

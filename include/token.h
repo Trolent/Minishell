@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:46:50 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:12:56 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:32:34 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ int		parenthesis_management(char *str, int *i, t_token **token);
 #                                  syntax_error.c                             #
 #############################################################################*/
 
-void	bad_syntax3(t_token *tk);
-void	bad_syntax2(char *str);
+void	bad_syntax2(t_token *tk);
 // returns correct error message in case of bad syntax
 void	bad_syntax(int c);
 

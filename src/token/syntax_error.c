@@ -3,27 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 15:55:42 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/21 13:39:24 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:32:34 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-void	bad_syntax3(t_token *tk)
+void	bad_syntax2(t_token *tk)
 {
 	if (!tk)
 		ft_dprintf(STDERR_FILENO, SYNTAX_ERR, "newline");
 	else
 		ft_dprintf(STDERR_FILENO, SYNTAX_ERR, tk->value);
-}
-
-void	bad_syntax2(char *str)
-{
-	ft_dprintf(STDERR_FILENO, SYNTAX_ERR, str);
 }
 
 void	bad_syntax(int c)

@@ -6,19 +6,25 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:03:43 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:06:11 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:20:32 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
 #include "minishell.h"
 
-void unused_test(t_data **help)
+static int	files_len(t_files *lst)
 {
-	t_data *data;
+	int	len;
 
-	data = *help;
-	data->status = 0;
+	len = 0;
+	while (lst)
+	{
+		if (lst->name)
+			len += ft_strlen(lst->name);
+		lst = lst->next;
+	}
+	return (len);
 }
 
 void	files_eat(t_files **node)
@@ -40,20 +46,6 @@ void	files_clear(t_files **head)
 		return ;
 	while (*head)
 		files_eat(head);
-}
-
-int	files_len(t_files *lst)
-{
-	int	len;
-
-	len = 0;
-	while (lst)
-	{
-		if (lst->name)
-			len += ft_strlen(lst->name);
-		lst = lst->next;
-	}
-	return (len);
 }
 
 char	*files_join(t_files **lst)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   syntax_order.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:46:28 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/21 13:37:48 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:32:34 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	subshell_rule(t_token **tk)
 		if (is_redirect((*tk)->type))
 			*tk = (*tk)->next->next;
 		else if ((*tk)->type == WORD)
-			return (bad_syntax3(*tk), 3);
+			return (bad_syntax2(*tk), 3);
 		else
 			(*tk) = (*tk)->next;
 	}

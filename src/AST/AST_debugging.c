@@ -3,40 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   AST_debugging.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:43:26 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/20 17:54:00 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:36:57 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "AST.h"
 
-void	print_indentation(int level)
-{
-	int	i;
+// void	print_indentation(int level)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < level)
-	{
-		ft_printf("\t");
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < level)
+// 	{
+// 		ft_printf("\t");
+// 		i++;
+// 	}
+// }
 
-void	print_arrayofchar(char **str, int level)
-{
-	int	i;
+// void	print_arrayofchar(char **str, int level)
+// {
+// 	int	i;
 
-	i = 0;
-	while (str[i])
-	{
-		print_indentation(level);
-		ft_dprintf(STDERR_FILENO, "env -i: %s\n", str[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (str[i])
+// 	{
+// 		print_indentation(level);
+// 		ft_dprintf(STDERR_FILENO, "env -i: %s\n", str[i]);
+// 		i++;
+// 	}
+// }
 
 //only used when debugging
 

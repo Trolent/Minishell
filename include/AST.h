@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AST.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 15:41:40 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/10/03 11:33:23 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:37:27 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void		redir_add_back(t_ast **lst, t_ast *new);
 #                                  AST_utils.c                                #
 #############################################################################*/
 
-void		next_token(t_token **tk);
 void		eat_token(t_token **tk);
 void		ast_free(t_ast *ast);
 

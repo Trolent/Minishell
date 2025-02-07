@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_2_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:21:15 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/28 15:23:21 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:40:03 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include "token.h"
 #include "expand.h"
 #include "env.h"
-
-void	files_addback_lst(t_files **main, t_files **sub)
-{
-	while (*sub)
-	{
-		files_addback_new(main, files_new_dup((*sub)->name));
-		files_eat(sub);
-	}
-}
 
 int	files_wordcount(t_files *lst)
 {
@@ -35,19 +26,6 @@ int	files_wordcount(t_files *lst)
 		lst = lst->next;
 	}
 	return (i);
-}
-
-void	files_remove_quotes(t_files *lst)
-{
-	char	*tmp;
-
-	while (lst)
-	{
-		tmp = remove_quotes(lst->name);
-		free(lst->name);
-		lst->name = tmp;
-		lst = lst->next;
-	}
 }
 
 char	**build_cmd_array(t_files **head)
