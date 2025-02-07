@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 09:53:30 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 17:13:45 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 17:31:19 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,8 @@
 # include <termios.h>
 
 /*#############################################################################
-#                                  Structures                                 #
+#                                  Enums                                      #
 #############################################################################*/
-
-typedef struct s_env
-{
-	char					*key;
-	char					*value;
-	struct s_env			*next;
-}							t_env;
 
 typedef enum e_node
 {
@@ -54,6 +47,17 @@ typedef enum e_token
 	APPEND = 1003,
 	HERE_DOC = 1004
 }							t_type;
+
+/*#############################################################################
+#                                  Structures                                 #
+#############################################################################*/
+
+typedef struct s_env
+{
+	char					*key;
+	char					*value;
+	struct s_env			*next;
+}							t_env;
 
 typedef struct s_token
 {
