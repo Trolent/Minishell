@@ -3,42 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   env_lst_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:50:24 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/10/01 17:32:20 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:45:19 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "minishell.h"
 #include "builtins.h"
-
-int	find_chr(char *str, char c)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-t_env	*ft_last(t_env *lst)
-{
-	t_env	*index;
-
-	index = lst;
-	if (!lst)
-		return (NULL);
-	while (index->next)
-		index = index->next;
-	return (index);
-}
 
 void	env_add_back(t_env **lst, t_env *new)
 {
@@ -79,7 +53,7 @@ t_env	*env_new(char *var)
 	node->key = copy_key(var);
 	if (!node->key)
 		return (free(node), NULL);
-	if (find_chr(var, '='))
+	if (ft_strchr(var, '='))
 	{
 		node->value = ft_strdup(var + ft_strlen(node->key) + 1);
 		if (!node->value)

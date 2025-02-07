@@ -6,17 +6,16 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:52:23 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/06 13:05:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:04:11 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENV_H
 # define ENV_H
 
-# include "minishell.h"
+# include "type.h"
 
 // env_cpy.c
-int		env_len(t_env *env);
 char	**env_copy_to_char_arr(t_env *env);
 int		env_copy(t_env **cpy, char **env);
 

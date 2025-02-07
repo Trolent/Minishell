@@ -6,13 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:21 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 15:37:53 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:03:51 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
 
+# include "minishell.h"
 # include "env.h"
 
 # define PWDERROR "minishell: pwd: error retrieving\

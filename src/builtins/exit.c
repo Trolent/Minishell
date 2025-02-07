@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:04:41 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/06 18:50:04 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:05:31 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,4 +113,4 @@ int	ft_exit(char **tab, t_data *data)
 // minishell$> 
 
 
-// doit prendre le retour de la commande précédente et non aavoir 127 hard code
+// doit prendre le retour de la commande précédente et non avoir 127 hard code

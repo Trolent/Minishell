@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:27 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 16:41:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:04:45 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,4 @@ void		flag_c(char *line, t_data *data);
 void		non_interactive_shell(t_data *data);
 int			redir_expand(t_ast *ast, t_data *data);
 
-#endif
+#endif /* ENV_H */

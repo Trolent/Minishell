@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_cpy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:12:54 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/10/01 17:28:12 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:43:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "minishell.h"
 #include "AST.h"
 
-int	env_len(t_env *env)
+static int	env_len(t_env *env)
 {
 	size_t	i;
 
@@ -51,7 +51,7 @@ char	**env_copy_to_char_arr(t_env *env)
 	return (strs);
 }
 
-t_env	*env_new_shlvl(char *var)
+static t_env	*env_new_shlvl(char *var)
 {
 	t_env	*node;
 	int		lvl;

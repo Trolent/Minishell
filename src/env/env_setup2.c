@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   env_setup2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 16:40:42 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/21 10:49:31 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:56:36 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
+#include "libft.h"
 
 void	ft_sort_alpha(t_env **env)
 {
