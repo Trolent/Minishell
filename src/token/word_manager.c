@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 15:04:34 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:12:52 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:33:22 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	quote_len(char *str, int *i, int symbol)
 	return (len);
 }
 
-int	quote_management(char *dup, int *j, char *str, int *i)
+static int	quote_management(char *dup, int *j, char *str, int *i)
 {
 	char	symbol;
 
@@ -49,7 +49,7 @@ int	quote_management(char *dup, int *j, char *str, int *i)
 	return (1);
 }
 
-int	word_len(char *str, int *i)
+static int	word_len(char *str, int *i)
 {
 	int	len;
 	int	index;

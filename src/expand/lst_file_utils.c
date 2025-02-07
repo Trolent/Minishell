@@ -6,29 +6,12 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 10:06:38 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/07 15:37:52 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:20:38 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
 
-int	files_addback_new(t_files **alst, t_files *new)
-{
-	t_files	*tmp;
-
-	if (!new)
-		return (1);
-	if (!*alst)
-	{
-		*alst = new;
-		return (0);
-	}
-	tmp = *alst;
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
-	return (0);
-}
 
 void	files_addback(t_files **alst, t_files *new)
 {

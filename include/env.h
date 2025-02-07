@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 13:52:23 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 10:04:11 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:38:23 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,12 @@ int		env_default_setup(t_data *data);
 int		env_lstdup(t_env **dst, t_env *src);
 
 // env_setup2.c
-void	ft_sort_alpha(t_env **env);
-int		export_default_setup(t_data *data);
-int		env_export_default_setup(t_data *data);
-int		env_export_copy(t_data *data, char **env);
 int		env_setup(t_data *data, char **env);
 
 // env_utils.c
 char	*env_get_value(t_env *env, char *key, t_data *data);
 t_env	*env_get_node(t_env *env, char *key);
 t_env	*env_get_real_node(t_env **env, char *key);
-void	env_print(t_env *lst);
 void	env_clear(t_env **lst);
 
 #endif

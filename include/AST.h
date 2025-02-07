@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/18 15:41:40 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:37:27 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:42:25 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,12 @@ t_ast		*ast_newwait(t_ast *wait_next);
 #############################################################################*/
 
 t_ast		*parse(t_token **tk);
-t_ast		*parse_redirect(t_token **tk);
-t_ast		*parse_operator(t_token **tk);
-t_ast		*parse_cmd(t_token **tk);
 
 /*#############################################################################
 #                                  cmd_list.c                                 #
 #############################################################################*/
 
 void		cmdlst_print(t_cmdlst *lst);
-t_cmdlst	*cmdlst_last(t_cmdlst *lst);
 void		cmdlst_add_back(t_cmdlst **lst, t_cmdlst *new);
 void		cmdlst_clear(t_cmdlst **lst);
 t_cmdlst	*cmdlst_new(char *value, int type, int tk);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   split_cmdlst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 12:32:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/21 13:59:57 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:40:49 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "AST.h"
 
-int	cmdlst_len(t_cmdlst *lst)
+static int	cmdlst_len(t_cmdlst *lst)
 {
 	int	i;
 

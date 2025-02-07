@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution_loop.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:31:58 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/28 23:22:34 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:34:21 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "AST.h"
 #include "exec.h"
 
-void	process_input(t_data *data, char *line)
+static void	process_input(t_data *data, char *line)
 {
 	t_token	*tk;
 	int		err;

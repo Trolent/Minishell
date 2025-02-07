@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   non_interactive.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:33:07 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/06 18:45:16 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:34:53 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "AST.h"
 #include "exec.h"
 
-void	non_interactive_input(t_data *data, t_token **tk, char *line)
+static void	non_interactive_input(t_data *data, t_token **tk, char *line)
 {
 	free(line);
 	data->ast_root = parse(tk);

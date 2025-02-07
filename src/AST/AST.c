@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   AST.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 19:36:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/20 18:06:41 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:42:20 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "AST.h"
 
-t_ast	*parse_cmd(t_token **tk)
+static t_ast	*parse_cmd(t_token **tk)
 {
 	t_ast	*new;
 
@@ -40,7 +40,7 @@ t_ast	*parse_cmd(t_token **tk)
 	return (new);
 }
 
-t_ast	*parse_redirect(t_token **tk)
+static t_ast	*parse_redirect(t_token **tk)
 {
 	t_ast	*new;
 
@@ -53,7 +53,7 @@ t_ast	*parse_redirect(t_token **tk)
 	return (new);
 }
 
-t_ast	*parse_pipe(t_token **tk)
+static t_ast	*parse_pipe(t_token **tk)
 {
 	t_ast	*new;
 
@@ -79,7 +79,7 @@ t_ast	*parse_pipe(t_token **tk)
 	return (new);
 }
 
-t_ast	*parse_operator(t_token **tk)
+static t_ast	*parse_operator(t_token **tk)
 {
 	t_ast	*new;
 	t_type	tmp;

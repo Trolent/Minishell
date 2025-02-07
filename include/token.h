@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:46:50 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:32:34 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:33:25 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,6 @@ int		grammar_check(t_token *tk);
 #############################################################################*/
 
 int		here_doc(t_token *tk, int pipe_fd[2]);
-
-/*#############################################################################
-#                                  here_doc_loop2.c                           #
-#############################################################################*/
-
-int		hd_loop(char *delimiter, t_token *tk);
 
 /*#############################################################################
 #                                  here_doc_manager.c                         #
@@ -123,8 +117,6 @@ int		redirect_management(char *str, int *i, t_token **tk);
 #############################################################################*/
 
 int		quote_len(char *str, int *i, int symbol);
-int		quote_management(char *dup, int *j, char *str, int *i);
-int		word_len(char *str, int *i);
 int		word_management(char *line, int *i, t_token **tk, t_data *data);
 
 #endif

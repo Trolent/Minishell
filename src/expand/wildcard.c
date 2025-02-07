@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 15:03:05 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 15:03:08 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:25:59 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "expand.h"
 #include <dirent.h>
 
-// Function to add a file to the list
 static void	add_file(t_files **files, const char *name)
 {
 	t_files	*new_file;
@@ -27,7 +26,6 @@ static void	add_file(t_files **files, const char *name)
 	*files = new_file;
 }
 
-// Custom wildcard matching function
 static int	wildcard_match(const char *pattern, const char *str)
 {
 	if (*pattern == '\0' && *str == '\0')
@@ -42,7 +40,6 @@ static int	wildcard_match(const char *pattern, const char *str)
 	return (0);
 }
 
-// Function to filter files based on the pattern
 static void	filter_files(t_files **files, const char *pattern)
 {
 	t_files	*prev;
@@ -72,7 +69,6 @@ static void	filter_files(t_files **files, const char *pattern)
 	}
 }
 
-// Function to read files from the current directory
 static t_files	*read_files(const char *pattern)
 {
 	DIR				*dir;
@@ -94,7 +90,6 @@ static t_files	*read_files(const char *pattern)
 	return (files);
 }
 
-// Main function to expand wildcards
 char	*expand_wildcard(char *str)
 {
 	t_files	*files;

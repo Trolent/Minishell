@@ -3,6 +3,8 @@
         "builtins.h": "c",
         "env.h": "c",
         "type.h": "c",
-        "expand.h": "c"
+        "expand.h": "c",
+        "token.h": "c",
+        "ast.h": "c"
     }
 }

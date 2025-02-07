@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tokenize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 12:31:45 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/20 14:34:17 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:32:14 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-int	dispatcher(char *line, int *i, t_token **tk, t_data *data)
+static int	dispatcher(char *line, int *i, t_token **tk, t_data *data)
 {
 	int	err;
 

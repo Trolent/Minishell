@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ifs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:51:53 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 19:15:27 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:20:14 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 #include "minishell.h"
 #include "token.h"
 
-int	is_ifs(char c)
+static int	is_ifs(char c)
 {
 	if (c == '\t' || c == '\n' || c == ' ')
 		return (1);
 	return (0);
 }
 
-int	ifs_countword(char *str)
+static int	ifs_countword(char *str)
 {
 	int	i;
 	int	count;
@@ -43,7 +43,7 @@ int	ifs_countword(char *str)
 	return (count);
 }
 
-int	ifs_len(char *str, int word_count)
+static int	ifs_len(char *str, int word_count)
 {
 	int	i;
 	int	j;
@@ -71,7 +71,7 @@ int	ifs_len(char *str, int word_count)
 	return (len);
 }
 
-void	ifs_copy_loop(char *str, char *cpy, int word_count)
+static void	ifs_copy_loop(char *str, char *cpy, int word_count)
 {
 	int	i;
 	int	j;

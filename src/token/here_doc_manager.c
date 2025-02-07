@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_manager.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:56:52 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 19:30:44 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:28:37 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "minishell.h"
 #include "token.h"
 
-void	here_doc_exit(t_token **head, char *line, t_data *data, int code)
+static void	here_doc_exit(t_token **head, char *line, t_data *data, int code)
 {
 	token_clear(head);
 	free(line);
@@ -26,7 +26,7 @@ void	here_doc_exit(t_token **head, char *line, t_data *data, int code)
 	exit(code);
 }
 
-int	fork_protection(int pipe_fd[2])
+static int	fork_protection(int pipe_fd[2])
 {
 	perror("minishell: here_doc_manager");
 	close(pipe_fd[0]);

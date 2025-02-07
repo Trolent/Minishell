@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AST_redir_nodes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:59:55 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/25 18:47:49 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:47:06 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	eat_cmdlst(t_cmdlst **lst)
 	*lst = tmp;
 }
 
-void	build_tmp_lists(t_token **tk, t_cmdlst **cmd, t_cmdlst **redir)
+static void	build_tmp_lists(t_token **tk, t_cmdlst **cmd, t_cmdlst **redir)
 {
 	t_type	tmp;
 	int		fd;

@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 16:18:02 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:20:48 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void				ft_print_lst_files(t_files *files);
 // lst_file_utils.c
 t_files				*files_new(char *str);
 t_files				*files_new_dup(char *str);
-int					files_addback_new(t_files **alst, t_files *new);
 void				files_addback(t_files **alst, t_files *new);
 
 // lst_file_utils2.c
@@ -61,8 +60,6 @@ char				*expand_hd(char *str, t_data *data);
 void				files_eat(t_files **node);
 char				**build_cmd_array(t_files **head);
 char				**expand_cmd(char **strs, t_data *data);
-int					ifs_countword(char *str);
-int					is_ifs(char c);
 char				*ifs_copy(char *str);
 char				*expand_string(char *str, t_data *data, t_files **head);
 void				free_tab(char **tab);

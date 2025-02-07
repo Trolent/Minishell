@@ -6,14 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:08:47 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:13:50 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:27:55 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-int	rl_exit(void)
+static int	rl_exit(void)
 {
 	if (g_state == SIGINT)
 	{
@@ -28,7 +28,7 @@ static void	set_signal(int sig)
 	g_state = sig;
 }
 
-int	hd_loop(char *delimiter, t_token *tk)
+static int	hd_loop(char *delimiter, t_token *tk)
 {
 	int		line_count;
 	char	*line;

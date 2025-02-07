@@ -6,14 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 16:40:42 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/07 09:56:36 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:38:27 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env.h"
 #include "libft.h"
 
-void	ft_sort_alpha(t_env **env)
+static void	ft_sort_alpha(t_env **env)
 {
 	t_env	*tmp;
 	t_env	*tmp2;
@@ -40,7 +40,7 @@ void	ft_sort_alpha(t_env **env)
 	}
 }
 
-int	export_default_setup(t_data *data)
+static int	export_default_setup(t_data *data)
 {
 	t_env	*new;
 	char	*tmp;
@@ -59,7 +59,7 @@ int	export_default_setup(t_data *data)
 	return (0);
 }
 
-int	env_export_default_setup(t_data *data)
+static int	env_export_default_setup(t_data *data)
 {
 	if (env_default_setup(data))
 		return (env_clear(&data->env), 1);
@@ -68,7 +68,7 @@ int	env_export_default_setup(t_data *data)
 	return (0);
 }
 
-int	env_export_copy(t_data *data, char **env)
+static int	env_export_copy(t_data *data, char **env)
 {
 	if (env_copy(&data->env, env))
 		return (1);

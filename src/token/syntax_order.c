@@ -6,14 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:46:28 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:32:34 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:31:27 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-int	scope_recursive(t_token **tk)
+static int	scope_recursive(t_token **tk)
 {
 	int	error;
 
@@ -39,7 +39,7 @@ int	scope_recursive(t_token **tk)
 	return (1);
 }
 
-int	subshell_rule(t_token **tk)
+static int	subshell_rule(t_token **tk)
 {
 	if (!tk || !*tk || (*tk)->type == PARENTHESIS_R)
 		return (0);
@@ -57,7 +57,7 @@ int	subshell_rule(t_token **tk)
 	return (0);
 }
 
-int	scope_check(t_token **tk)
+static int	scope_check(t_token **tk)
 {
 	int	error;
 

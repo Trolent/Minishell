@@ -6,14 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 11:22:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:31:12 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:41:06 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "AST.h"
 
-t_cmdlst	*cmdlst_last(t_cmdlst *lst)
+static t_cmdlst	*cmdlst_last(t_cmdlst *lst)
 {
 	t_cmdlst	*index;
 

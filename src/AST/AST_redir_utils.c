@@ -6,14 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 11:42:22 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 15:36:28 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:46:34 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "AST.h"
 
-t_ast	*redir_last(t_ast *lst)
+static t_ast	*redir_last(t_ast *lst)
 {
 	t_ast	*index;
 

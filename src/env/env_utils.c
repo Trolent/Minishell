@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 14:00:22 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/12/21 11:51:26 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:36:00 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,6 @@ t_env	*env_get_node(t_env *env, char *key)
 		env = env->next;
 	}
 	return (NULL);
-}
-
-void	env_print(t_env *lst)
-{
-	while (lst)
-	{
-		printf("%s=%s\n", lst->key, lst->value);
-		lst = lst->next;
-	}
 }
 
 void	env_clear(t_env **lst)

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   remove_quotes.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 20:36:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 18:58:56 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 16:29:21 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-int	redir_quote_len(char *str, int *i, int symbol)
+static int	redir_quote_len(char *str, int *i, int symbol)
 {
 	int	len;
 
@@ -29,7 +29,7 @@ int	redir_quote_len(char *str, int *i, int symbol)
 	return (len);
 }
 
-int	redir_len(char *str)
+static int	redir_len(char *str)
 {
 	int	i;
 	int	len;
@@ -49,7 +49,7 @@ int	redir_len(char *str)
 	return (len);
 }
 
-void	redir_quote_manager(char *dup, char *str, int *i, int *j)
+static void	redir_quote_manager(char *dup, char *str, int *i, int *j)
 {
 	int	symbol;
 

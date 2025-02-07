@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/07 15:33:36 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/07 16:45:27 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ LIBFT	:= 	libft/libft.a
 SRC		:=	main.c								\
 			AST/AST_allocations.c				\
 			AST/AST_debugging.c					\
+			AST/AST_free.c					\
 			AST/AST_redir_nodes.c				\
 			AST/AST_redir_utils.c				\
 			AST/AST_utils.c						\
@@ -58,7 +59,6 @@ SRC		:=	main.c								\
 			builtins/exit2.c					\
 			expand/expand_2.c					\
 			expand/expand_2_utils.c				\
-			expand/expand_utils_3.c				\
 			expand/ifs.c						\
 			expand/expand_files_double_quote.c	\
 			expand/expand_files_utils.c			\
@@ -66,10 +66,8 @@ SRC		:=	main.c								\
 			expand/expand_files.c				\
 			expand/expand_here_doc.c			\
 			expand/lst_file_utils.c				\
-			expand/lst_file_utils2.c			\
-			expand/sort_files.c 				\
 			expand/wildcard.c					\
-			expand/wildcard_utils.c					\
+			expand/wildcard_utils.c				\
 			expand/var_copy.c					\
 			exec/command_node.c					\
 			exec/command_utils.c				\
