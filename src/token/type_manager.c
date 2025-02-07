@@ -3,36 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   type_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 15:01:53 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/20 17:05:18 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:11:54 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-char	*copy_value(char *str, int *i, bool (*f)(int))
-{
-	int		j;
-	char	*dup;
-
-	dup = malloc(sizeof(char) * 3);
-	if (!dup)
-		return (NULL);
-	j = 0;
-	while (str[*i] && str[*i] != '\n' && f(str[*i]) && j < 2)
-	{
-		dup[j] = str[*i];
-		j++;
-		(*i)++;
-	}
-	dup[j] = '\0';
-	return (dup);
-}
-
-char	*copy_operator(char *str, int *i, char type)
+static char	*copy_operator(char *str, int *i, char type)
 {
 	int		j;
 	char	*dup;

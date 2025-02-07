@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   grammar_check.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 19:11:43 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/16 19:12:03 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:15:09 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-int	redir_rules(t_token *tk)
+static int	redir_rules(t_token *tk)
 {
 	if (!tk->next)
 		return (bad_syntax3(tk->next), 0);
@@ -22,7 +22,7 @@ int	redir_rules(t_token *tk)
 	return (1);
 }
 
-int	operator_rules(t_token *tk)
+static int	operator_rules(t_token *tk)
 {
 	if (!tk->next)
 		return (bad_syntax3(tk), 0);
@@ -35,7 +35,7 @@ int	operator_rules(t_token *tk)
 	return (1);
 }
 
-int	parenthesis_rules(t_token *tk)
+static int	parenthesis_rules(t_token *tk)
 {
 	if (!tk->next)
 		return (1);

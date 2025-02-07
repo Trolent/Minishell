@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc_loop.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:08:47 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/12 22:53:15 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:13:50 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	rl_exit(void)
 	return (130);
 }
 
-void	set_signal(int sig)
+static void	set_signal(int sig)
 {
 	g_state = sig;
 }

@@ -6,12 +6,20 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:03:43 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/06 18:37:57 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:06:11 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "expand.h"
 #include "minishell.h"
+
+void unused_test(t_data **help)
+{
+	t_data *data;
+
+	data = *help;
+	data->status = 0;
+}
 
 void	files_eat(t_files **node)
 {

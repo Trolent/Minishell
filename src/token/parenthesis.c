@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   parenthesis.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 14:53:29 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/09/21 13:13:11 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:12:33 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "token.h"
 
-char	*copy_parenthesis(char *str, int *i)
+static char	*copy_parenthesis(char *str, int *i)
 {
 	char	*dup;
 

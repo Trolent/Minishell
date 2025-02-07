@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/07 14:58:09 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/07 15:07:53 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,7 +95,7 @@ SRC 	:=	$(addprefix $(SRC_DIR)/, $(SRC))
 OBJ 	:=	$(patsubst $(SRC_DIR)/%.c, $(BUILD)/%.o, $(SRC))
 DEPS 	:=	$(OBJ:.o=.d)
 
-CC		:=	cc
+CC		:=	cc -ffunction-sections 
 CFLAGS	:=	-Wall -Werror -Wextra -MMD -MP -Iinclude -Ilibft/include -g
 
 OS := $(shell uname)
@@ -120,7 +120,7 @@ $(NAME): $(OBJ) $(LIBFT)
 
 $(BUILD)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 	@printf "\033[1;32mCompiled: $<\033[0m\n";
 
 $(LIBFT):

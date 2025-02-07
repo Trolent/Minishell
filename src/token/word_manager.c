@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   word_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 15:04:34 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/20 17:55:13 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:12:52 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	word_len(char *str, int *i)
 	return (len);
 }
 
-char	*copy_word(char *str, int *i)
+static char	*copy_word(char *str, int *i)
 {
 	int		j;
 	char	*dup;

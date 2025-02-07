@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 13:46:50 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/12/21 15:10:50 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:12:56 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ int		tokenize(char *line, t_token **tk, t_data *data);
 #                                  type_manager.c                             #
 #############################################################################*/
 
-char	*copy_value(char *str, int *i, bool (*f)(int));
 int		operator_management(char *str, int *i, t_token **tk);
 int		redirect_management(char *str, int *i, t_token **tk);
 
@@ -127,7 +126,6 @@ int		redirect_management(char *str, int *i, t_token **tk);
 int		quote_len(char *str, int *i, int symbol);
 int		quote_management(char *dup, int *j, char *str, int *i);
 int		word_len(char *str, int *i);
-char	*copy_word(char *str, int *i);
 int		word_management(char *line, int *i, t_token **tk, t_data *data);
 
 #endif
