@@ -6,13 +6,13 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 18:29:57 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/01 18:12:57 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:07:59 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
 
-int	check_export_env(t_env *env, char *str)
+static int	check_export_env(t_env *env, char *str)
 {
 	t_env	*node;
 	char	*key_tmp;
@@ -40,7 +40,7 @@ int	check_export_env(t_env *env, char *str)
 	return (0);
 }
 
-int	check_key_export(t_env *export, char *str)
+static int	check_key_export(t_env *export, char *str)
 {
 	t_env	*node;
 
@@ -55,7 +55,7 @@ int	check_key_export(t_env *export, char *str)
 	return (0);
 }
 
-int	export_of_value(t_env *export, char *str)
+static int	export_of_value(t_env *export, char *str)
 {
 	t_env	*node;
 	char	*key_tmp;
@@ -80,7 +80,7 @@ int	export_of_value(t_env *export, char *str)
 	return (0);
 }
 
-int	check_export_export(t_env *export, char *str)
+static int	check_export_export(t_env *export, char *str)
 {
 	int	i;
 
