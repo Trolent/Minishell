@@ -6,18 +6,12 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:41:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/06 13:35:43 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:58:38 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// what about ft free array, why not ft free tab ?
-//risk of leak if the entire array isnt freed
-// Shouldnt use classic ft_free_tab instead ?
-
 #include "minishell.h"
 #include "env.h"
-#include "token.h"
-#include "AST.h"
 #include "setup.h"
 #include "exec.h"
 
