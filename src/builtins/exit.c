@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:04:41 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/07 10:05:31 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:02:12 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,12 @@ int	ft_exit(char **tab, t_data *data)
 	return (0);
 }
 
-
 // return minishell$> exit 3424 gfdsfg
 // exit
 // minishell: exit: too many arguments
 // minishell$> echo $?
 // 127
-// minishell$> 
+// minishell$>
 
 // bash
 // trolland@bess-f4r3s4:~/Documents/Cursus/Git/Minishell$ exit 3424 gfdsfg
@@ -96,7 +95,6 @@ int	ft_exit(char **tab, t_data *data)
 // 1
 // trolland@bess-f4r3s4:~/Documents/Cursus/Git/Minishell$ exit
 // exit
-
 
 // minishell$> exit 123 132
 // exit
@@ -110,7 +108,6 @@ int	ft_exit(char **tab, t_data *data)
 // minishell: exit: too many arguments
 // minishell$> echo $?
 // 127
-// minishell$> 
-
+// minishell$>
 
 // doit prendre le retour de la commande précédente et non avoir 127 hard code

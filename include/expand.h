@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 14:54:47 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:01:32 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,6 @@ typedef struct s_files
 	struct s_files	*next;
 }					t_files;
 
-// expand.c
-char				**expand_tab_of_cmd(char **tab_cmd, t_data *data);
-int					expand_str(char *str, t_data *data, t_files **files);
-
-// expand_split.c
-// char				**ft_split_expand(char *str, char *sep);
-t_files				*ft_split_to_list(char *str);
-
 // expand_debugg.c
 void				print_tab(char **tab);
 void				ft_print_lst_files(t_files *files);
@@ -41,18 +33,7 @@ int					files_addback_new(t_files **alst, t_files *new);
 void				files_addback(t_files **alst, t_files *new);
 
 // lst_file_utils2.c
-void				ft_free_lst_files(t_files **files);
 void				ft_free_lst_files_expand(t_files **files);
-t_files				*ft_recover_files(void);
-char				*write_files_expand(t_files *files);
-int					creat_node_n_add_back_if_str(t_files **files, char *str);
-
-// lst_file_utils3.c
-int					creat_node_n_add_back(t_files **files, char *str);
-int					lst_size_files(t_files **files);
-char				**ft_lst_to_tab(t_files **files);
-char				*write_files(t_files *files);
-void				ft_sort_alpha_files(t_files **files);
 
 // sort_files.c
 void				ft_strlcat_files(char *dst, const char *src, size_t lenres);
@@ -61,7 +42,8 @@ void				ft_strlcat_files(char *dst, const char *src, size_t lenres);
 char				*expand_wildcard(char *str);
 
 // wildcard_utils.c
-void free_curr_name(t_files	*curr);
+void				free_curr_name(t_files *curr);
+char				*write_files(t_files *files);
 
 // expand_files.c
 void				dq_copy(char *str, int *i, t_data *data, t_files **lst);

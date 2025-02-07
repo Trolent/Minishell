@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/07 14:49:11 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/07 14:58:09 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,6 @@ SRC		:=	main.c								\
 			expand/expand_here_doc.c			\
 			expand/lst_file_utils.c				\
 			expand/lst_file_utils2.c			\
-			expand/lst_file_utils3.c			\
 			expand/sort_files.c 				\
 			expand/wildcard.c					\
 			expand/wildcard_utils.c					\
