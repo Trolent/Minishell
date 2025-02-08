@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipe_node.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 14:17:18 by gschwand          #+#    #+#             */
-/*   Updated: 2024/11/13 21:30:59 by akdovlet         ###   ########.fr       */
+/*   Created: 2025/02/08 13:58:08 by trolland          #+#    #+#             */
+/*   Updated: 2025/02/08 13:58:11 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-int	left_pipe_setup(t_data *data, int pipe_fd[2], int backup_fd[2])
+static int	left_pipe_setup(t_data *data, int pipe_fd[2], int backup_fd[2])
 {
 	backup_fd[1] = dup(STDOUT_FILENO);
 	if (backup_fd[1] == -1)
@@ -40,7 +40,7 @@ int	left_pipe_setup(t_data *data, int pipe_fd[2], int backup_fd[2])
 	return (0);
 }
 
-int	right_pipe_setup(t_data *data, int pipe_fd[2], int backup_fd[2])
+static int	right_pipe_setup(t_data *data, int pipe_fd[2], int backup_fd[2])
 {
 	if (dup2(backup_fd[1], STDOUT_FILENO) == -1)
 	{

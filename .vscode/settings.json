@@ -5,6 +5,7 @@
         "type.h": "c",
         "expand.h": "c",
         "token.h": "c",
-        "ast.h": "c"
+        "ast.h": "c",
+        "exec.h": "c"
     }
 }
