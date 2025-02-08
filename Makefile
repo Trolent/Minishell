@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/08 13:02:26 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/08 13:12:11 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,8 +73,7 @@ SRC		:=	main.c								\
 			exec/exec_cmd.c 					\
 			exec/pipe_node.c 					\
 			exec/exec.c 						\
-			exec/operator.c 					\
-			exec/pidlst.c 						\
+			exec/pidlst_utils.c 				\
 			exec/subshell.c 					\
 			exec/redir_hd.c						\
 			exec/redir_lst_clear.c				\

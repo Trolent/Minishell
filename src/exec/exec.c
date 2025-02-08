@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/16 15:38:30 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/06 15:04:19 by trolland         ###   ########.fr       */
+/*   Created: 2025/02/08 13:07:09 by trolland          #+#    #+#             */
+/*   Updated: 2025/02/08 13:11:31 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 #include "AST.h"
 #include "exec.h"
 #include "env.h"
+
+static int	ft_operator(t_ast *ast, t_data *data)
+{
+	exec_recursion(ast->op_left, data);
+	if (ast->op_type == OR && data->status)
+		data->status = exec_recursion(ast->op_right, data);
+	else if (ast->op_type == AND && !data->status)
+		data->status = exec_recursion(ast->op_right, data);
+	return (data->status);
+}
 
 int	exec_recursion(t_ast *ast, t_data *data)
 {
