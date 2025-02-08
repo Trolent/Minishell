@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:57:43 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/21 11:09:55 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	hard_path_check(char *cmd)
 			perror("lstat");
 		if (S_ISDIR(statbuf.st_mode))
 		{
-			ft_dprintf(2, "minishell: %s: Is a directory\n", cmd);
+			ft_dprintf(STDERR_FILENO, "minishell: %s: Is a directory\n", cmd);
 			return (126);
 		}
 		if (!access(cmd, X_OK))

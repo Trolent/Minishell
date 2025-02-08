@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:23:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/06 13:52:40 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:22:23 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,33 @@ static char	*get_home_directory(t_env **env, t_data *data)
 
 	home = env_get_value(*env, "HOME", data);
 	if (!home)
-		ft_dprintf(2, "minishell: cd: HOME not set\n");
+		ft_dprintf(STDERR_FILENO, "minishell: cd: HOME not set\n");
 	return (home);
+}
+
+static char	*expand_tilde(char *path, t_env **env, t_data *data)
+{
+	char	*home;
+	char	*expanded_path;
+
+	if (path[0] == '~')
+	{
+		home = env_get_value(*env, "HOME", data);
+		if (!home)
+		{
+			ft_dprintf(STDERR_FILENO, "minishell: cd: HOME not set\n");
+			return (NULL);
+		}
+		expanded_path = ft_strjoin(home, path + 1);
+		if (!expanded_path)
+		{
+			ft_dprintf(STDERR_FILENO,
+				"minishell: cd: memory allocation error\n");
+			return (NULL);
+		}
+		return (expanded_path);
+	}
+	return (ft_strdup(path));
 }
 
 int	builtin_cd(t_data *data, char **args, t_env **env)
@@ -53,12 +78,17 @@ int	builtin_cd(t_data *data, char **args, t_env **env)
 			return (1);
 	}
 	else if (args[2])
-		return (ft_dprintf(2, "minishell: cd: too many arguments\n"), 1);
+		return (ft_dprintf(STDERR_FILENO, "minishell: cd: too many arguments\n"), 1);
 	else
 		path = args[1];
+	path = expand_tilde(path, env, data);
+	if (!path)
+		return (1);
+	if (path[0] == '\0')
+		return (0);
 	if (chdir(path))
 	{
-		ft_dprintf(2, "minishell: cd: %s: %s\n", path, strerror(errno));
+		ft_dprintf(STDERR_FILENO, "minishell: cd: %s: %s\n", path, strerror(errno));
 		return (1);
 	}
 	change_pwd(env);

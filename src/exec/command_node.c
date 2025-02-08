@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:53:21 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/06 15:23:29 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	find_path_loop(char **cmd_arr, char **path)
 				cmd_arr[0] = cmd_path;
 				return (0);
 			}
-			ft_dprintf(2, "minishell: %s: %s\n", cmd_arr[0], strerror(errno));
+			ft_dprintf(STDERR_FILENO, "minishell: %s: %s\n", cmd_arr[0], strerror(errno));
 			return (126);
 		}
 		free(cmd_path);
@@ -84,7 +84,7 @@ void	forked_execution(t_ast *ast, t_data *data)
 		clear_exit(data, err);
 	env = env_copy_to_char_arr(data->env);
 	execve(ast->cmd[0], ast->cmd, env);
-	ft_dprintf(2, "minishell: %s: %s\n", ast->cmd[0], strerror(errno));
+	ft_dprintf(STDERR_FILENO, "minishell: %s: %s\n", ast->cmd[0], strerror(errno));
 	ft_free_tab(env);
 	clear_exit(data, 1);
 }
@@ -121,7 +121,7 @@ int	command_node(t_ast *ast, t_data *data)
 		return (0);
 	if (!ast->cmd[0][0])
 	{
-		ft_dprintf(2, "minishell: %s: command not found\n", ast->cmd[0]);
+		ft_dprintf(STDERR_FILENO, "minishell: %s: command not found\n", ast->cmd[0]);
 		return (127);
 	}
 	if (ft_is_builtins(ast->cmd[0]))

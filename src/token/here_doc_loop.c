@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:08:47 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:27:55 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	hd_loop(char *delimiter, t_token *tk)
 		if (g_state == SIGINT)
 			return (free(line), 130);
 		if (!line)
-			return (ft_dprintf(2, HD_ERROR, line_count, delimiter), 0);
+			return (ft_dprintf(STDERR_FILENO, HD_ERROR, line_count, delimiter), 0);
 		if (!ft_strcmp(delimiter, line))
 		{
 			free(line);

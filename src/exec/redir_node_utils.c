@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_node_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:35:27 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/07 16:06:21 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	redir_expand(t_ast *ast, t_data *data)
 	expansion = remove_quotes(first_step);
 	free(first_step);
 	if (!expansion)
-		return (ft_dprintf(2, "minishell: %s: ambiguous redirect\n", \
+		return (ft_dprintf(STDERR_FILENO, "minishell: %s: ambiguous redirect\n", \
 		ast->redir_filename), 1);
 	free(ast->redir_filename);
 	ast->redir_filename = expansion;

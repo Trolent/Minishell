@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:33:07 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:34:53 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	non_interactive_shell(t_data *data)
 		if (tokenize(line, &tk, data))
 		{
 			data->status = 2;
-			ft_dprintf(2, "minishell: line %d: `%s'\n", line_count, line);
+			ft_dprintf(STDERR_FILENO, "minishell: line %d: `%s'\n", line_count, line);
 			free(line);
 			break ;
 		}

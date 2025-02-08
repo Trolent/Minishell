@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/19 14:21:07 by gschwand          #+#    #+#             */
-/*   Updated: 2024/12/21 10:49:13 by akdovlet         ###   ########.fr       */
+/*   Created: 2025/02/08 14:02:14 by trolland          #+#    #+#             */
+/*   Updated: 2025/02/08 14:02:16 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int	ft_is_builtins(char *cmd)
 	return (0);
 }
 
-// Check when I need to use **env and when I need to use *env
-// export for sure
-// unset maybe
 int	ft_exec_builtins(t_ast *ast, t_data *data)
 {
 	if (!ft_strcmp(ast->cmd[0], "echo"))

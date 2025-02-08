@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:04:39 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/08 13:05:36 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	check_and_update_env(t_env **env, char *str)
 
 	check = check_alnum_str(str);
 	if (check == 0)
-		return (ft_dprintf(2,
+		return (ft_dprintf(STDERR_FILENO,
 				"minishell: export: `%s': not a valid identifier\n", str), 1);
 	else if (check == 2)
 		return (update_or_add_node(env, str));

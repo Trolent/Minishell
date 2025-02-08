@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:31:58 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:34:21 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	flag_c(char *line, t_data *data)
 	tk = NULL;
 	if (!line)
 	{
-		ft_dprintf(2, "minishell: -c: option requires arguments\n");
+		ft_dprintf(STDERR_FILENO, "minishell: -c: option requires arguments\n");
 		data->status = 2;
 		return ;
 	}

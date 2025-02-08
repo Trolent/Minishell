@@ -6,6 +6,7 @@
         "expand.h": "c",
         "token.h": "c",
         "ast.h": "c",
-        "exec.h": "c"
+        "exec.h": "c",
+        "minishell.h": "c"
     }
 }

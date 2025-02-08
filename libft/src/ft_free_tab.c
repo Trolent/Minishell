@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 18:27:28 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 16:40:46 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 15:11:05 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_free_tab(char **tab)
 	int	i;
 
 	i = 0;
+	if (!tab)
+		return ;
 	while (tab[i])
 	{
 		free(tab[i]);

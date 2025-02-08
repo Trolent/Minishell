@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redir_hd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:36:44 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/07 15:01:22 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	redir_hd(t_ast *ast, t_data *data)
 		!ft_strchr(ast->redir_filename, '"'))
 		expand_content_here_document(ast, data);
 	if (dup2(ast->redir_fd, STDIN_FILENO) == -1)
-		return (ft_dprintf(2, "minishell: %s\n", strerror(errno)), 1);
+		return (ft_dprintf(STDERR_FILENO, "minishell: %s\n", strerror(errno)), 1);
 	close(ast->redir_fd);
 	return (0);
 }

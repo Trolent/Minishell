@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/08 13:12:11 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/08 18:09:49 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBFT	:= 	libft/libft.a
 SRC		:=	main.c								\
 			AST/AST_allocations.c				\
 			AST/AST_debugging.c					\
-			AST/AST_free.c					\
+			AST/AST_free.c						\
 			AST/AST_redir_nodes.c				\
 			AST/AST_redir_utils.c				\
 			AST/AST_utils.c						\
@@ -28,7 +28,6 @@ SRC		:=	main.c								\
 			env/env_cpy.c						\
 			env/env_lst_utils.c					\
 			env/env_setup.c						\
-			env/env_setup2.c					\
 			env/env_utils.c						\
 			setup/setup_shell.c					\
 			setup/setup_signal.c				\
@@ -51,13 +50,13 @@ SRC		:=	main.c								\
 			builtins/pwd.c						\
 			builtins/echo.c						\
 			builtins/export.c					\
-			builtins/export_utils.c					\
+			builtins/export_utils.c				\
 			builtins/unset.c					\
 			builtins/env.c						\
 			builtins/exit.c						\
 			builtins/exit2.c					\
-			expand/expand_2.c					\
-			expand/expand_2_utils.c				\
+			expand/expand.c						\
+			expand/expand_utils.c				\
 			expand/ifs.c						\
 			expand/expand_files_double_quote.c	\
 			expand/expand_files_utils.c			\

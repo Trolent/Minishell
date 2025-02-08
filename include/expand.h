@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 17:17:22 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 18:10:03 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	**expand_cmd(char **strs, t_data *data);
 void	var_copy(char *str, int *i, t_data *data, t_files **lst);
 
 /*#############################################################################
-#                             expand_2_utils.c                                #
+#                             expand_utils.c                                #
 #############################################################################*/
 
 char	**build_cmd_array(t_files **head);
