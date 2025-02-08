@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:41:41 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 17:30:28 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:04:34 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ chdir, dup, dup2, pipe, execve, isatty, ttyname, ttyslot*/
 
 /* Custom libraries */
 # include "libft.h" // libft functions
-# include "type.h" // custom types
+# include "type.h"  // custom types
 
 /*#############################################################################
 #                                  Defines                                    #
@@ -66,12 +66,12 @@ while looking for closing `%c'\n"
 #                                  Globals                                    #
 #############################################################################*/
 
-extern volatile sig_atomic_t g_state;
+extern volatile sig_atomic_t	g_state;
 
 /*#############################################################################
 #                                  Functions                                  #
 #############################################################################*/
 
-void	clear_exit(t_data *data, int code);
+void							clear_exit(t_data *data, int code);
 
 #endif

@@ -6,11 +6,20 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:04:39 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 10:10:06 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:02:56 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "builtins.h"
+
+static int	check_export(char *arg, t_data *data)
+{
+	if (check_and_update_env(&data->export, arg))
+		return (1);
+	if (check_and_update_env(&data->env, arg))
+		return (1);
+	return (0);
+}
 
 static int	print_env_lst(t_env *lst)
 {
@@ -20,17 +29,14 @@ static int	print_env_lst(t_env *lst)
 	while (lst)
 	{
 		if (lst->value)
-			print = ft_dprintf(STDOUT_FILENO, "export %s=\"%s\"\n", lst->key,
-					lst->value);
+			print = ft_dprintf(STDOUT_FILENO, "declare -x %s=\"%s\"\n",
+					lst->key, lst->value);
 		else
-			print = ft_dprintf(STDOUT_FILENO, "export %s\n", lst->key);
+			print = ft_dprintf(STDOUT_FILENO, "declare -x %s\n", lst->key);
 		if (print == -1)
 			return (perror("minishell: export: write error"), print);
-		// or up here ?? which is best ??
 		lst = lst->next;
 	}
-	// if (print == -1)
-	// 	perror("minishell: export: write error");
 	return (print);
 }
 

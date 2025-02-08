@@ -6,7 +6,7 @@
 #    By: trolland <trolland@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/19 11:38:49 by akdovlet          #+#    #+#              #
-#    Updated: 2025/02/07 16:45:27 by trolland         ###   ########.fr        #
+#    Updated: 2025/02/08 13:02:26 by trolland         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,7 @@ SRC		:=	main.c								\
 			builtins/pwd.c						\
 			builtins/echo.c						\
 			builtins/export.c					\
-			builtins/export2.c					\
-			builtins/export3.c					\
+			builtins/export_utils.c					\
 			builtins/unset.c					\
 			builtins/env.c						\
 			builtins/exit.c						\
@@ -92,7 +91,7 @@ SRC 	:=	$(addprefix $(SRC_DIR)/, $(SRC))
 OBJ 	:=	$(patsubst $(SRC_DIR)/%.c, $(BUILD)/%.o, $(SRC))
 DEPS 	:=	$(OBJ:.o=.d)
 
-CC		:=	cc -ffunction-sections 
+CC		:=	cc 
 CFLAGS	:=	-Wall -Werror -Wextra -MMD -MP -Iinclude -Ilibft/include -g
 
 OS := $(shell uname)
@@ -117,7 +116,7 @@ $(NAME): $(OBJ) $(LIBFT)
 
 $(BUILD)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@printf "\033[1;32mCompiled: $<\033[0m\n";
 
 $(LIBFT):

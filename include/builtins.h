@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:21 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/07 17:05:38 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/08 13:03:59 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,49 +22,47 @@
  cannot access parent directories"
 
 /*#############################################################################
-#                                   echo.c                                    #
+#                                  echo .c                                    #
 #############################################################################*/
 
-int		builtin_echo(char **strs);
+int	builtin_echo(char **strs);
 
 /*#############################################################################
-#                                    cd.c                                     #
+#                                  cd .c                                     #
 #############################################################################*/
 
-int		builtin_cd(t_data *data, char **args, t_env **env);
+int	builtin_cd(t_data *data, char **args, t_env **env);
 
 /*#############################################################################
-#                                  export.c                                   #
+#                                  export .c                                   #
 #############################################################################*/
 
-int		ft_export(char **args, t_data *data);
-int		check_export(char *arg, t_data *data);
-int		ft_change_value(t_env *node, char *str);
-int		check_alnum_str(char *str);
+int	ft_export(char **args, t_data *data);
+int	check_and_update_env(t_env **env, char *str);
 
 /*#############################################################################
-#                                    pwd.c                                    #
+#                                  pwd .c                                    #
 #############################################################################*/
 
-int		ft_pwd(char **args, t_env *env);
+int	ft_pwd(char **args, t_env *env);
 
 /*#############################################################################
-#                                    env.c                                    #
+#                                  env .c                                    #
 #############################################################################*/
 
-int		ft_env(char **args, t_env *env);
+int	ft_env(char **args, t_env *env);
 
 /*#############################################################################
-#                                   unset.c                                   #
+#                                  unset .c                                   #
 #############################################################################*/
 
-int		unset(char **tab, t_data *data);
+int	unset(char **tab, t_data *data);
 
 /*#############################################################################
-#                                   exit.c                                    #
+#                                  exit .c                                    #
 #############################################################################*/
 
-int		ft_exit(char **tab, t_data *data);
-int		check_overflow(char *str);
+int	ft_exit(char **tab, t_data *data);
+int	check_overflow(char *str);
 
 #endif
