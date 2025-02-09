@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:01:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 19:11:41 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:29:04 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,15 +143,17 @@ static int	dq_len2(char *str, bool end_quote)
 static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
 {
 	int		j;
+	int		end;
 	int		len;
 	char	*dup;
 
 	j = 0;
+	end = 0;
 	len = dq_len2(str + *i, *end_quote);
 	printf("len is: %d\n", len);
 	dup = malloc(sizeof(char) * (len + 1));
 	if (!dup)
-		return ;
+		return (-1);
 	while (str[*i])
 	{
 		if (str[*i] == '$' && (is_variable(str[(*i) + 1]) || str[(*i) + 1] == '?'))
@@ -161,12 +163,17 @@ static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
 			if (*end_quote)
 			{
 				dup[j++] = str[(*i)++];
+				end = 1;
 				break ;
 			}
 			*end_quote =  true;
 		}
 		dup[j++] = str[(*i)++];
 	}
+	dup[j] = '\0';
+	fprintf(stderr, "dup is: %s\n", dup);
+	files_addback(tmp, files_new(dup));
+	return (end);
 }
 
 void	dq_copy2(char *str, int *i, t_data *data, t_files **lst)
@@ -186,4 +193,8 @@ void	dq_copy2(char *str, int *i, t_data *data, t_files **lst)
 		else if (dq_copy_tmp2(str, i, &tmp_lst, &end_quote))
 			break ;
 	}
+	fusion = files_join(&tmp_lst);
+	if (!fusion)
+		return ;
+	files_addback(lst, files_new(fusion));
 }

@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:49:05 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 16:32:10 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:23:33 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*expand_string(char *str, t_data *data, t_files **head)
 		if (str[i] == '\'')
 			sq_copy(str, &i, head);
 		else if (str[i] == '"')
-			dq_copy(str, &i, data, head);
+			dq_copy2(str, &i, data, head);
 		else if (str[i] == '$' && is_variable(str[i + 1]))
 			var_copy(str, &i, data, head);
 		else if (str[i] == '$' && str[i + 1] == '?')

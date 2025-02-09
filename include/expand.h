@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:34 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/08 18:10:03 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:23:59 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char	*expand_filename(char *str, t_data *data);
 #############################################################################*/
 
 void	dq_copy(char *str, int *i, t_data *data, t_files **lst);
+void	dq_copy2(char *str, int *i, t_data *data, t_files **lst);
 
 /*#############################################################################
 #                             expand_here_doc.c                               #
