@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:23:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 10:36:15 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 15:50:40 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,20 @@ static char	*expand_tilde(char *path, t_env **env, t_data *data)
 	return (ft_strdup(path));
 }
 
+static int	no_path_or_empty(char *path, t_data *data, t_env **env)
+{
+	path = expand_tilde(path, env, data);
+	if (!path)
+		return (1);
+	else if (path[0] == '\0')
+		return (0);
+	return (2);
+}
+
 int	builtin_cd(t_data *data, char **args, t_env **env)
 {
 	char	*path;
+	int		ret;
 
 	if (!args[1])
 	{
@@ -82,11 +93,9 @@ int	builtin_cd(t_data *data, char **args, t_env **env)
 				"minishell: cd: too many arguments\n"), 1);
 	else
 		path = args[1];
-	path = expand_tilde(path, env, data);
-	if (!path)
-		return (1);
-	if (path[0] == '\0')
-		return (0);
+	ret = no_path_or_empty(path, data, env);
+	if (ret == 1 || ret == 0)
+		return (ret);
 	if (chdir(path))
 	{
 		ft_dprintf(STDERR_FILENO, "minishell: cd: %s: %s\n", path,
