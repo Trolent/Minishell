@@ -3,48 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   wait_pid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:11:00 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/06 16:11:02 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:53:31 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "exec.h"
 
-static void	print_error(int status)
+static void	print_error(int status, int is_sig)
 {
-	if (WTERMSIG(status) == SIGINT)
-		write(2, "\n", 1);
-	if (WTERMSIG(status) == SIGQUIT)
-		write(2, "Quit\n", 5);
-	if (WTERMSIG(status) == SIGBUS)
-		write(2, "Bus error (core dumped)\n", 25);
+	if (!is_sig)
+	{
+		if (WTERMSIG(status) == SIGQUIT)
+			write(2, "Quit", 4);
+		if (WTERMSIG(status) == SIGBUS)
+			write(2, "Bus error (core dumped)", 24);
+		write(2, "\n", 1);		
+	}
 }
 
 static void	wait_for_children(t_data *data)
 {
 	int			status;
+	int			is_sig;
 	t_pidlst	*node;
-	t_pidlst	*tmp;
 
 	node = data->pidlst;
 	status = 0;
+	is_sig = 0;
 	while (node)
 	{
 		waitpid(node->pid, &status, 0);
 		if (WIFSIGNALED(status))
+		{
 			data->status = 128 + WTERMSIG(status);
+			print_error(status, is_sig);
+			is_sig = 1;
+		}
 		else
 			data->status = WEXITSTATUS(status);
-		tmp = node;
-		node = node->next;
-		free(tmp);
-		tmp = NULL;
+		pidlst_eat(&node);
 	}
-	print_error(status);
-	data->pidlst = NULL;
 	sigaction(SIGINT, &data->sa, NULL);
+	// print_error(status, is_sig);
+	data->pidlst = NULL;
 }
 
 int	ft_wait_pid(t_ast *ast, t_data *data)

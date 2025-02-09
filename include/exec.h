@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 18:01:27 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/08 14:12:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:31:29 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int			ft_builtins(t_ast *ast, t_data *data);
 t_pidlst	*ft_lstnew_pidlst(pid_t pid);
 void		ft_lstadd_back_pidlst(t_pidlst **lst, t_pidlst *new);
 void		pidlst_clear(t_pidlst **lst);
+void		pidlst_eat(t_pidlst **lst);
 
 /*#############################################################################
 #                                 wait_pid.c                                  #
