@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:01:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 19:29:04 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:32:54 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,11 @@ static void	dq_copy_tmp(char *str, int *i, t_files **tmp, bool *end_quote)
 
 	j = 0;
 	len = dq_len(str + *i, *end_quote);
-	printf("len is: %d\n", len);
 	dup = malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return ;
 	while (str[*i])
 	{
-		fprintf(stderr, "str[%d] is: %c\n", *i, str[*i]);
 		if ((str[*i] == '$' && is_variable(str[(*i) + 1])) || (str[*i] == '$'
 				&& str[(*i) + 1] == '?'))
 			break ;
@@ -74,7 +72,6 @@ static void	dq_copy_tmp(char *str, int *i, t_files **tmp, bool *end_quote)
 		dup[j++] = str[(*i)++];
 	}
 	dup[j] = '\0';
-	fprintf(stderr, "dup is: %s\n", dup);
 	files_addback(tmp, files_new(dup));
 }
 
@@ -90,18 +87,15 @@ void	dq_copy(char *str, int *i, t_data *data, t_files **lst)
 	tmp_lst = NULL;
 	while (str[*i])
 	{
-		printf("0char str[%d] = %c\n", *i, str[(*i)]);
 		if (str[*i] == '$' && is_variable(str[(*i) + 1]))
 			var_copy_redir(str, i, data, &tmp_lst);
 		else if (str[*i] == '$' && str[(*i) + 1] == '?')
 			status_copy(i, data, &tmp_lst);
 		else
 			dq_copy_tmp(str, i, &tmp_lst, &end_quote);
-		// printf("1char str[%d] = %c\n", *i, str[(*i)]);
 		if (str[*i] == '"')
 		{
 			dq_copy_tmp(str, i, &tmp_lst, &end_quote);
-			printf("break here\n");
 			(*i)++;
 			break ;
 		}
@@ -110,7 +104,6 @@ void	dq_copy(char *str, int *i, t_data *data, t_files **lst)
 	if (!fusion)
 		return ;
 	files_addback(lst, files_new(fusion));
-	printf("end of function\n");
 }
 // "$SALUT"
 
@@ -150,7 +143,6 @@ static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
 	j = 0;
 	end = 0;
 	len = dq_len2(str + *i, *end_quote);
-	printf("len is: %d\n", len);
 	dup = malloc(sizeof(char) * (len + 1));
 	if (!dup)
 		return (-1);
@@ -171,7 +163,6 @@ static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
 		dup[j++] = str[(*i)++];
 	}
 	dup[j] = '\0';
-	fprintf(stderr, "dup is: %s\n", dup);
 	files_addback(tmp, files_new(dup));
 	return (end);
 }

@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:12:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 16:57:26 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:34:48 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	expansion_routine(char *str, t_data *data, t_files **head)
 	fusion = expand_string(str, data, &sublst);
 	if (!fusion)
 		return (files_clear(&sublst));
-	fprintf(stderr, "fusion is: |%s|\n", fusion);
 	if (ft_strchr(fusion, '*'))
 	{
 		fusion = expand_wildcard(fusion);
