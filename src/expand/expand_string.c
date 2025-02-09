@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 19:49:05 by akdovlet          #+#    #+#             */
-/*   Updated: 2024/11/09 19:49:32 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:32:10 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ char	*expand_string(char *str, t_data *data, t_files **head)
 			var_copy(str, &i, data, head);
 		else if (str[i] == '$' && str[i + 1] == '?')
 			status_copy(&i, data, head);
+		else if (str[i] == '$' && (str[i + 1] == '\'' 
+			|| str[i + 1] == '"' || ft_isdigit(str[i + 1])))
+			i += 2;
 		else
 			regular_copy(str, &i, head);
 	}

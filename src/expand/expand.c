@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_2.c                                         :+:      :+:    :+:   */
+/*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:12:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:14:23 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:57:26 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,13 @@ static void	expansion_routine(char *str, t_data *data, t_files **head)
 {
 	t_files	*sublst;
 	char	*fusion;
-	char	*final;
+	// char	*final;
 
 	sublst = NULL;
 	fusion = expand_string(str, data, &sublst);
 	if (!fusion)
 		return (files_clear(&sublst));
+	fprintf(stderr, "fusion is: |%s|\n", fusion);
 	if (ft_strchr(fusion, '*'))
 	{
 		fusion = expand_wildcard(fusion);
@@ -91,11 +92,11 @@ static void	expansion_routine(char *str, t_data *data, t_files **head)
 			return ;
 		}
 	}
-	final = remove_quotes(fusion);
-	free(fusion);
-	if (!final)
-		return ;
-	files_addback(head, files_new(final));
+	// final = remove_quotes(fusion);
+	// free(fusion);
+	// if (!final)
+	// 	return ;
+	files_addback(head, files_new(fusion));
 	return ;
 }
 

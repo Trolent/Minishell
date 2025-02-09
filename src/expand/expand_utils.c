@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_2_utils.c                                   :+:      :+:    :+:   */
+/*   expand_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 19:21:15 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/07 16:13:28 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:58:22 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**build_cmd_array(t_files **head)
 		return (files_clear(head), NULL);
 	while (*head)
 	{
-		strs[i] = ft_strdup((*head)->name);
+		strs[i] = remove_quotes((*head)->name);
 		if (!strs[i])
 			return (files_clear(head), ft_free_tab(strs), NULL);
 		files_eat(head);
