@@ -6,24 +6,23 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:53:21 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:34:07 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AST.h"
 #include "exec.h"
 #include "expand.h"
 #include "minishell.h"
-#include "exec.h"
 #include "setup.h"
-#include "AST.h"
 
 int	find_path_loop(char **cmd_arr, char **path)
 {
 	char	*cmd_path;
 	int		i;
 
-	i = 0;
-	while (path[i])
+	i = -1;
+	while (path[++i])
 	{
 		cmd_path = meet_in_the_middle(path[i], cmd_arr[0], '/');
 		if (!cmd_path)
@@ -36,11 +35,11 @@ int	find_path_loop(char **cmd_arr, char **path)
 				cmd_arr[0] = cmd_path;
 				return (0);
 			}
-			ft_dprintf(STDERR_FILENO, "minishell: %s: %s\n", cmd_arr[0], strerror(errno));
+			ft_dprintf(STDERR_FILENO, "minishell: %s: %s\n", cmd_arr[0],
+				strerror(errno));
 			return (126);
 		}
 		free(cmd_path);
-		i++;
 	}
 	ft_dprintf(STDERR_FILENO, "minishell: %s: command not found\n", cmd_arr[0]);
 	return (127);
@@ -84,7 +83,8 @@ void	forked_execution(t_ast *ast, t_data *data)
 		clear_exit(data, err);
 	env = env_copy_to_char_arr(data->env);
 	execve(ast->cmd[0], ast->cmd, env);
-	ft_dprintf(STDERR_FILENO, "minishell: %s: %s\n", ast->cmd[0], strerror(errno));
+	ft_dprintf(STDERR_FILENO, "minishell: %s: %s\n", ast->cmd[0],
+		strerror(errno));
 	ft_free_tab(env);
 	clear_exit(data, 1);
 }
@@ -121,7 +121,8 @@ int	command_node(t_ast *ast, t_data *data)
 		return (0);
 	if (!ast->cmd[0][0])
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: %s: command not found\n", ast->cmd[0]);
+		ft_dprintf(STDERR_FILENO, "minishell: %s: command not found\n",
+			ast->cmd[0]);
 		return (127);
 	}
 	if (ft_is_builtins(ast->cmd[0]))

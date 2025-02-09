@@ -6,14 +6,14 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 18:33:07 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:32:45 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "token.h"
 #include "AST.h"
 #include "exec.h"
+#include "minishell.h"
+#include "token.h"
 
 static void	non_interactive_input(t_data *data, t_token **tk, char *line)
 {
@@ -42,7 +42,8 @@ void	non_interactive_shell(t_data *data)
 		if (tokenize(line, &tk, data))
 		{
 			data->status = 2;
-			ft_dprintf(STDERR_FILENO, "minishell: line %d: `%s'\n", line_count, line);
+			ft_dprintf(STDERR_FILENO, "minishell: line %d: `%s'\n", line_count,
+				line);
 			free(line);
 			break ;
 		}

@@ -1,0 +1,15 @@
+total 244
+drwxr-xr-x  9 trolland 2023_paris    169 Feb  9 10:25 .
+drwxr-xr-x  6 trolland 2023_paris     89 Feb  8 12:13 ..
+-rw-r--r--  1 trolland 2023_paris     13 Feb  9 10:25 bonjour
+drwxr-xr-x 10 trolland 2023_paris    141 Feb  9 09:17 .build
+drwxr-xr-x  2 trolland 2023_paris     32 Feb  9 10:26 Docs
+drwxr-xr-x  8 trolland 2023_paris    220 Feb  9 09:31 .git
+-rw-r--r--  1 trolland 2023_paris      8 Feb  9 10:25 hey
+-rw-r--r--  1 trolland 2023_paris     46 Feb  9 10:21 hola
+drwxr-xr-x  2 trolland 2023_paris    143 Feb  8 11:41 include
+drwxr-xr-x  5 trolland 2023_paris     74 Feb  9 09:17 libft
+-rw-r--r--  1 trolland 2023_paris   4421 Feb  8 18:09 Makefile
+-rwxrwxrwx  1 trolland 2023_paris 227984 Feb  9 09:33 minishell
+drwxr-xr-x 10 trolland 2023_paris    144 Feb  8 11:41 src
+drwxr-xr-x  2 trolland 2023_paris     27 Feb  8 11:41 .vscode

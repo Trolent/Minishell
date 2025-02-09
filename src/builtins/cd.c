@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:23:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/08 18:22:23 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:36:15 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int	builtin_cd(t_data *data, char **args, t_env **env)
 			return (1);
 	}
 	else if (args[2])
-		return (ft_dprintf(STDERR_FILENO, "minishell: cd: too many arguments\n"), 1);
+		return (ft_dprintf(STDERR_FILENO,
+				"minishell: cd: too many arguments\n"), 1);
 	else
 		path = args[1];
 	path = expand_tilde(path, env, data);
@@ -88,7 +89,8 @@ int	builtin_cd(t_data *data, char **args, t_env **env)
 		return (0);
 	if (chdir(path))
 	{
-		ft_dprintf(STDERR_FILENO, "minishell: cd: %s: %s\n", path, strerror(errno));
+		ft_dprintf(STDERR_FILENO, "minishell: cd: %s: %s\n", path,
+			strerror(errno));
 		return (1);
 	}
 	change_pwd(env);

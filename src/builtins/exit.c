@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 09:04:41 by gschwand          #+#    #+#             */
-/*   Updated: 2025/02/08 14:28:07 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:35:55 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ static int	handle_numeric_argument_error(char *arg, t_data *data)
 {
 	if (!data->fork)
 		ft_dprintf(STDERR_FILENO, "exit\n");
-	ft_dprintf(STDERR_FILENO, "minishell: exit: %s: numeric argument required\n", arg);
+	ft_dprintf(STDERR_FILENO, "minishell: exit: \
+		%s: numeric argument required\n", arg);
 	return (clear_exit(data, 2), 2);
 }
 
