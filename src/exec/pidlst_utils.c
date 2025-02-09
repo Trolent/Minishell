@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pidlst_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/08 13:10:15 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/08 13:10:18 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 20:31:01 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,15 @@ void	pidlst_clear(t_pidlst **lst)
 		*lst = tmp;
 	}
 	*lst = NULL;
+}
+
+void	pidlst_eat(t_pidlst **lst)
+{
+	t_pidlst	*tmp;
+
+	if (!(*lst) || !lst)
+		return ;
+	tmp = (*lst)->next;
+	free(*lst);
+	*lst = tmp;
 }
