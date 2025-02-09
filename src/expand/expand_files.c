@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:13:00 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 16:25:21 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:15:48 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	regular_copy(char *str, int *i, t_files **lst)
 	while (str[*i] && str[(*i)] != '"' && str[(*i)] != '\'')
 	{
 		if (str[(*i)] == '$' && (is_variable(str[(*i) + 1])
-				|| str[(*i) + 1] == '?' ||  str[(*i) + 1] == '"'))
+				|| str[(*i) + 1] == '?' ||  is_quote(str[(*i) + 1])))
 			break ;
 		dup[j++] = str[(*i)++];
 	}

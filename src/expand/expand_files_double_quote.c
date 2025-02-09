@@ -6,7 +6,7 @@
 /*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:01:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 18:38:31 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 19:11:41 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ static int	dq_len(char *str, bool end_quote)
 	len = 0;
 	while (str[i])
 	{
-		if (str[i] == '$' && (is_variable(str[(i) + 1]) || (str[i] == '$'
-					&& str[i + 1] == '?')))
+		if (str[i] == '$' && (is_variable(str[(i) + 1]) || str[i + 1] == '?'))
 			break ;
 		if (str[i] == '"')
 		{
@@ -115,16 +114,76 @@ void	dq_copy(char *str, int *i, t_data *data, t_files **lst)
 }
 // "$SALUT"
 
-// void	dq_copy2(char *str, int *i, t_data *data, t_files **lst)
-// {
-// 	char *fusion;
-// 	t_files	*sublst;
-// 	bool	end_quote;
+static int	dq_len2(char *str, bool end_quote)
+{
+	int	i;
+	int	len;
 
-// 	end_quote = false;
-// 	sublst = NULL;
-// 	while (str[*i])
-// 	{
-		
-// 	}
-// }
+	i = 0;
+	len = 0;
+	while (str[i])
+	{
+		if (str[i] == '$' && (is_variable(str[(i) + 1]) || str[i + 1] == '?'))
+			break ;
+		if (str[i] == '"')
+		{
+			if(end_quote)
+			{
+				len++;
+				break ;
+			}
+			end_quote = true;
+		}
+		i++;
+		len++;
+	}
+	return (len);
+}
+
+static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
+{
+	int		j;
+	int		len;
+	char	*dup;
+
+	j = 0;
+	len = dq_len2(str + *i, *end_quote);
+	printf("len is: %d\n", len);
+	dup = malloc(sizeof(char) * (len + 1));
+	if (!dup)
+		return ;
+	while (str[*i])
+	{
+		if (str[*i] == '$' && (is_variable(str[(*i) + 1]) || str[(*i) + 1] == '?'))
+			break ;
+		if (str[*i] == '"')
+		{
+			if (*end_quote)
+			{
+				dup[j++] = str[(*i)++];
+				break ;
+			}
+			*end_quote =  true;
+		}
+		dup[j++] = str[(*i)++];
+	}
+}
+
+void	dq_copy2(char *str, int *i, t_data *data, t_files **lst)
+{
+	char	*fusion;
+	t_files	*tmp_lst;
+	bool	end_quote;
+
+	end_quote = false;
+	tmp_lst = NULL;
+	while (str[*i])
+	{
+		if (str[*i] == '$' && is_variable(str[(*i) + 1]))
+			var_copy_redir(str, i, data, &tmp_lst);
+		else if (str[*i] == '$' && str[(*i) + 1] == '?')
+			status_copy(i, data, &tmp_lst);
+		else if (dq_copy_tmp2(str, i, &tmp_lst, &end_quote))
+			break ;
+	}
+}
