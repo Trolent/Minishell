@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   expand.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:12:25 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 19:34:48 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:47:41 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "env.h"
+#include "expand.h"
 #include "minishell.h"
 #include "token.h"
-#include "expand.h"
-#include "env.h"
 
 static char	*get_key(char *str, int i)
 {
@@ -76,7 +76,6 @@ static void	expansion_routine(char *str, t_data *data, t_files **head)
 {
 	t_files	*sublst;
 	char	*fusion;
-	// char	*final;
 
 	sublst = NULL;
 	fusion = expand_string(str, data, &sublst);
@@ -91,10 +90,6 @@ static void	expansion_routine(char *str, t_data *data, t_files **head)
 			return ;
 		}
 	}
-	// final = remove_quotes(fusion);
-	// free(fusion);
-	// if (!final)
-	// 	return ;
 	files_addback(head, files_new(fusion));
 	return ;
 }

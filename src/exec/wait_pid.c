@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wait_pid.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 16:11:00 by trolland          #+#    #+#             */
-/*   Updated: 2025/02/09 20:53:31 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:47:50 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	print_error(int status, int is_sig)
 			write(2, "Quit", 4);
 		if (WTERMSIG(status) == SIGBUS)
 			write(2, "Bus error (core dumped)", 24);
-		write(2, "\n", 1);		
+		write(2, "\n", 1);
 	}
 }
 
@@ -47,7 +47,6 @@ static void	wait_for_children(t_data *data)
 		pidlst_eat(&node);
 	}
 	sigaction(SIGINT, &data->sa, NULL);
-	// print_error(status, is_sig);
 	data->pidlst = NULL;
 }
 

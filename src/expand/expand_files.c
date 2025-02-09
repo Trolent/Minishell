@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_files.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 12:13:00 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 19:15:48 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:48:59 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	regular_copy(char *str, int *i, t_files **lst)
 	j = 0;
 	while (str[*i] && str[(*i)] != '"' && str[(*i)] != '\'')
 	{
-		if (str[(*i)] == '$' && (is_variable(str[(*i) + 1])
-				|| str[(*i) + 1] == '?' ||  is_quote(str[(*i) + 1])))
+		if (str[(*i)] == '$' && (is_variable(str[(*i) + 1]) \
+		|| str[(*i) + 1] == '?' || is_quote(str[(*i) + 1])))
 			break ;
 		dup[j++] = str[(*i)++];
 	}

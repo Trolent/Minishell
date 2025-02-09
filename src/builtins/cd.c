@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:23:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 21:36:22 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:47:59 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	*expand_tilde(char *path, t_env **env, t_data *data)
 
 static char	*no_path_or_empty(char *path, t_data *data, t_env **env, int *ret)
 {
-	char *expanded_path;
+	char	*expanded_path;
 
 	if (!path)
 	{
