@@ -6,7 +6,7 @@
 /*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 10:23:14 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 15:50:40 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:36:22 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,28 @@ static char	*expand_tilde(char *path, t_env **env, t_data *data)
 	return (ft_strdup(path));
 }
 
-static int	no_path_or_empty(char *path, t_data *data, t_env **env)
+static char	*no_path_or_empty(char *path, t_data *data, t_env **env, int *ret)
 {
-	path = expand_tilde(path, env, data);
+	char *expanded_path;
+
 	if (!path)
-		return (1);
+	{
+		*ret = 1;
+		return (NULL);
+	}
 	else if (path[0] == '\0')
-		return (0);
-	return (2);
+	{
+		*ret = 0;
+		return (NULL);
+	}
+	expanded_path = expand_tilde(path, env, data);
+	if (!expanded_path)
+	{
+		*ret = 1;
+		return (NULL);
+	}
+	*ret = 2;
+	return (expanded_path);
 }
 
 int	builtin_cd(t_data *data, char **args, t_env **env)
@@ -93,15 +107,14 @@ int	builtin_cd(t_data *data, char **args, t_env **env)
 				"minishell: cd: too many arguments\n"), 1);
 	else
 		path = args[1];
-	ret = no_path_or_empty(path, data, env);
+	path = no_path_or_empty(path, data, env, &ret);
 	if (ret == 1 || ret == 0)
-		return (ret);
+		return (free(path), ret);
 	if (chdir(path))
 	{
 		ft_dprintf(STDERR_FILENO, "minishell: cd: %s: %s\n", path,
 			strerror(errno));
-		return (1);
+		return (free(path), 1);
 	}
-	change_pwd(env);
-	return (0);
+	return (free(path), change_pwd(env), 0);
 }
