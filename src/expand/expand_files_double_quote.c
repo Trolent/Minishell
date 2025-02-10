@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_files_double_quote.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:01:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/09 21:52:09 by trolland         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:16:33 by akdovlet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,17 @@ static int	dq_len2(char *str, bool end_quote)
 	return (len);
 }
 
-static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
+static int	evaluate_end_quote(char *dup, char *str, int *i, bool *end_quote)
 {
-	int		j;
-	int		end;
-	int		len;
-	char	*dup;
+	int	j;
+	int	end;
 
 	j = 0;
 	end = 0;
-	len = dq_len2(str + *i, *end_quote);
-	dup = malloc(sizeof(char) * (len + 1));
-	if (!dup)
-		return (-1);
 	while (str[*i])
 	{
-		if (str[*i] == '$' && (is_variable(str[(*i) + 1]) || str[(*i)
-				+ 1] == '?'))
+		if (str[*i] == '$' && (is_variable(str[(*i) + 1])
+				|| str[(*i) + 1] == '?'))
 			break ;
 		if (str[*i] == '"')
 		{
@@ -72,6 +66,21 @@ static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
 		dup[j++] = str[(*i)++];
 	}
 	dup[j] = '\0';
+	return (end);
+}
+
+static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
+{
+	int		j;
+	int		end;
+	char	*dup;
+
+	j = 0;
+	end = 0;
+	dup = malloc(sizeof(char) * (dq_len2(str + *i, *end_quote) + 1));
+	if (!dup)
+		return (1);
+	end = evaluate_end_quote(dup, str, i, end_quote);
 	files_addback(tmp, files_new(dup));
 	return (end);
 }
