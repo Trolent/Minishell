@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_files_double_quote.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akdovlet <akdovlet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: trolland <trolland@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:01:11 by akdovlet          #+#    #+#             */
-/*   Updated: 2025/02/10 19:16:33 by akdovlet         ###   ########.fr       */
+/*   Updated: 2025/02/13 09:37:37 by trolland         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,9 @@ static int	evaluate_end_quote(char *dup, char *str, int *i, bool *end_quote)
 
 static int	dq_copy_tmp2(char *str, int *i, t_files **tmp, bool *end_quote)
 {
-	int		j;
 	int		end;
 	char	*dup;
 
-	j = 0;
 	end = 0;
 	dup = malloc(sizeof(char) * (dq_len2(str + *i, *end_quote) + 1));
 	if (!dup)
