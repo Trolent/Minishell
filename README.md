@@ -139,5 +139,6 @@ This project provided a deep dive into:
 
 Thank you for taking the time to explore this project! I hope it serves as a useful and inspiring example for learning how shells work at a low level. 🐚✨
 
+Project made with the help of my teammate [AK Dovlet](https://github.com/akdovlet)
 
 
